@@ -48,6 +48,18 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # capistrano stuff
+  gem 'capistrano', '3.8.1'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-nginx', '~> 2.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rake', require: false
+  gem 'capistrano-rails-console', require: false
+  gem 'capistrano-rails-db'
+  gem 'capistrano-logtail'
+  gem 'capistrano-logrotate', git: 'git@github.com:linjunpop/capistrano-logrotate.git', ref: '1af150a1164a493ed4088bfc86c304daa92ccc09', require: false
 end
 
 group :test do
