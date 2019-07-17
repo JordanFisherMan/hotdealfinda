@@ -54,7 +54,7 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-nginx', '~> 2.0'
-  gem 'capistrano-rvm'
+  gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-rake', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rails-db'
