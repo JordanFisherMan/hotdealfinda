@@ -82,4 +82,6 @@ production:
   <<: *default
   database: hotdealsfinda_production
   username: hotdealsfinda
-  password: <%= ENV['HOTDEALSFINDA_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.production[:db][:password] %>
+  host: <%= Rails.application.credentials.production[:db][:host] %>
+  port: <%= Rails.application.credentials.production[:db][:port] %>

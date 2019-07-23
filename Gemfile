@@ -15,6 +15,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
+gem 'whenever', require: false
+gem 'capistrano-logrotate'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -59,7 +61,6 @@ group :development do
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rails-db'
   gem 'capistrano-logtail'
-  gem 'capistrano-logrotate', git: 'git@github.com:linjunpop/capistrano-logrotate.git', ref: '1af150a1164a493ed4088bfc86c304daa92ccc09', require: false
 end
 
 group :test do

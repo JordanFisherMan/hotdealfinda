@@ -1,3 +1,18 @@
+server 'ec2-18-221-185-62.us-east-2.compute.amazonaws.com', user: 'deploy', roles: %w{web app db}
+
+ set :app_domain, 'ec2-18-221-185-62.us-east-2.compute.amazonaws.com'
+ set :nginx_domains, "ec2-18-221-185-62.us-east-2.compute.amazonaws.com"
+ set :branch, :master
+
+ set :ssh_options, {
+   keys: %w(~/.ssh/rails-production.pem),
+   forward_agent: false,
+   auth_methods: %w(publickey password)
+ }
+# set :nginx_ssl_certificate_path, '/etc/letsencrypt/live/bestdealfinda.com'
+# set :nginx_ssl_certificate_key_path, "/etc/letsencrypt/live/bestdealfinda.com"
+# set :deploy_to, '/home/deploy/bestdealfinda'
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
