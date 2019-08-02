@@ -1,14 +1,14 @@
-server 'ec2-18-221-185-62.us-east-2.compute.amazonaws.com', user: 'deploy', roles: %w{web app db}
+server 'hotdealsfinda.com', user: 'deploy', roles: %w{web app db}
 
- set :app_domain, 'ec2-18-221-185-62.us-east-2.compute.amazonaws.com'
- set :nginx_domains, "ec2-18-221-185-62.us-east-2.compute.amazonaws.com"
+ set :app_domain, 'hotdealsfinda.com'
+ set :nginx_domains, "hotdealsfinda.com www.hotdealsfinda.com"
  set :branch, :master
-
  set :ssh_options, {
    keys: %w(~/.ssh/rails-production.pem),
    forward_agent: false,
    auth_methods: %w(publickey password)
  }
+ 
 # set :nginx_ssl_certificate_path, '/etc/letsencrypt/live/bestdealfinda.com'
 # set :nginx_ssl_certificate_key_path, "/etc/letsencrypt/live/bestdealfinda.com"
 # set :deploy_to, '/home/deploy/bestdealfinda'

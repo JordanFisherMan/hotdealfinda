@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+.label{
+  color: blue;
+}
+div.label{
+  color: blue;
+}
+div{
+  color: green !important;
+}
