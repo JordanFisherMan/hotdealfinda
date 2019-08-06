@@ -62,9 +62,9 @@ set :nginx_template, :default
 set :nginx_roles, :web
 set :nginx_static_dir, "public"
 set :nginx_application_name, "#{fetch :application}-#{fetch :stage}"
-set :nginx_use_ssl, false
-# set :nginx_ssl_certificate, 'fullchain.pem'
-# set :nginx_ssl_certificate_key, 'privkey.pem'
+set :nginx_use_ssl, true
+set :nginx_ssl_certificate, 'fullchain.pem'
+set :nginx_ssl_certificate_key, 'privkey.pem'
 set :nginx_read_timeout, 30
 set :app_server, true
 set :app_server_socket, "#{shared_path}/tmp/sockets/puma.sock"
