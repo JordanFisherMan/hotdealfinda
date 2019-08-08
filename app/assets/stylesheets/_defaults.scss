@@ -1,0 +1,23 @@
+body{
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+input[type="text"]{
+  box-sizing: border-box;
+}
+
+select{
+  background: white;
+}
+
+.container{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}

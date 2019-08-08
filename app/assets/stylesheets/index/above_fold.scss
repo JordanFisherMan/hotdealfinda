@@ -1,0 +1,14 @@
+@import "../variables";
+@import "../defaults";
+@import "../mixins";
+@import "../components/hero";
+@import "../components/locations";
+@import "../components/logo_bar";
+@import "../components/search_form";
+
+.index{
+
+  &__logo-bar{
+    padding-top: 10px;
+  }
+}

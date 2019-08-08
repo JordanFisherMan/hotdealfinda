@@ -1,0 +1,16 @@
+.hero{
+  background: linear-gradient(45deg, #00be34, #00e23f);
+  padding: 35px 0;
+
+  &__heading{
+    color: white;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  &__search-form{
+    width: 90%;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+}

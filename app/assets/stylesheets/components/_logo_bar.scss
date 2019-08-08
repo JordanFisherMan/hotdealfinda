@@ -1,0 +1,11 @@
+.logo-bar{
+  text-align: center;
+
+  &__picture{
+    display: inline-block;
+  }
+
+  &__logo{
+    width: 150px;
+  }
+}
