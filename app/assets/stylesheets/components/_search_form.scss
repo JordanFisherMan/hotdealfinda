@@ -41,6 +41,10 @@
     width: 100%;
     font-size: $input-font-size;
     font-weight: 200;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    cursor: pointer;
   }
 
   &__locations-and-submit{
