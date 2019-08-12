@@ -2,6 +2,7 @@
 @import "../defaults";
 @import "../mixins";
 @import "../components/categories";
+@import "../components/deal";
 @import "../components/hero";
 @import "../components/locations";
 @import "../components/logo_bar";
@@ -11,5 +12,14 @@
 
   &__logo-bar{
     padding-top: 10px;
+  }
+
+  &__deal{
+    padding: 0 15px;
+    width: 25%;
+  }
+
+  &__deals{
+    padding: 40px 0;
   }
 }

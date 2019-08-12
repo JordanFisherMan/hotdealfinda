@@ -1,0 +1,118 @@
+.footer {
+  background-color: $footer-background-colour;
+  padding: 40px 0 15px;
+  color: $font-colour-primary;
+
+  &__form {
+    display: flex;
+  }
+
+  &__search-heading {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+
+  &__search-field {
+    padding: 10px;
+    width: 100%;
+    max-width: 360px;
+    border: 0;
+    @include input-font;
+
+    &::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      font-style: italic;
+      @include input-font;
+    }
+
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      font-style: italic;
+      @include input-font;
+    }
+
+    &:-ms-input-placeholder {
+      /* IE 10+ */
+      font-style: italic;
+      @include input-font;
+    }
+
+    &:-moz-placeholder {
+      /* Firefox 18- */
+      font-style: italic;
+      @include input-font;
+    }
+  }
+
+  &__magnifying-glass {
+    width: 13px;
+  }
+
+  &__submit {
+    background-color: $green;
+    color: white;
+    padding: 10px;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+
+  &__search-container {
+    margin-bottom: 20px;
+  }
+
+  &__link-lists {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  &__link-list {
+    width: 25%;
+  }
+
+  &__category,
+  &__channel,
+  &__link {
+    color: $font-colour-primary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__category,
+  &__channel {
+    display: block;
+  }
+
+  &__channel {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  &__category,
+  &__link {
+    font-weight: 300;
+    font-size: 13px;
+  }
+
+  &__logo {
+    width: $logo-width;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

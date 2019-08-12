@@ -1,0 +1,29 @@
+.deal {
+  cursor: pointer;
+  border: 1px solid white;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $border-colour;
+  }
+
+  &__text-container {
+    padding: 15px;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__star {
+    width: 13px;
+    color: gold;
+  }
+
+  &__rating {
+    margin-bottom: 5px;
+  }
+}
