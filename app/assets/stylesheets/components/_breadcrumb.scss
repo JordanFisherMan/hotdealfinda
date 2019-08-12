@@ -1,0 +1,15 @@
+.breadcrumb {
+  background-color: $breadcrumb-colour;
+  display: inline-block;
+  padding: 8px 15px;
+
+  &__close {
+    color: $font-colour-primary;
+    width: 7px;
+    vertical-align: middle;
+  }
+
+  &__text {
+    margin-right: 5px;
+  }
+}

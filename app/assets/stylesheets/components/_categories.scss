@@ -12,8 +12,12 @@
     transition: color 0.2s;
 
     &:hover{
-      background-color: $green;
+      background-color: $button-hover;
       color: white;
+    }
+
+    &:active{
+      background-color: $button-active;
     }
   }
 }

@@ -6,8 +6,7 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-      <% assets = Rails.application.assets || Rails.application.config.assets %>
-      <%= assets['index/above_fold'].to_s.html_safe %>
+      <%= Rails.application.assets_manifest.find_sources("#{action_name}/above_fold").first.to_s.html_safe %>
     </style>
     <%= javascript_include_tag 'application' %>
     <style>

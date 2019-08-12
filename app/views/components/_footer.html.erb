@@ -33,7 +33,10 @@
 <hr class="gradient">
 <div class="container">
   <%= link_to root_path do %>
+  <picture class="logo-bar__picture">
+    <source srcset="<%= image_path 'logo.webp' %>" type="image/webp" alt="" class="footer__logo">
     <%= image_tag 'logo.png', class: 'footer__logo' %>
+  </picture>
   <% end %>
   <nav class="footer__nav">
     <%= link_to 'Contact Us', '', class: 'footer__link' %>

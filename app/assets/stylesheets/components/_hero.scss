@@ -1,6 +1,10 @@
 .hero{
   padding: 35px 0;
 
+  &--smaller{
+    padding: 10px 0;
+  }
+
   &__heading,
   &__search-form{
     margin-left: auto;
