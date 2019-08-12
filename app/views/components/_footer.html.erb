@@ -32,7 +32,9 @@
 </div>
 <hr class="gradient">
 <div class="container">
-  <%= image_tag 'logo.png', class: 'footer__logo' %>
+  <%= link_to root_path do %>
+    <%= image_tag 'logo.png', class: 'footer__logo' %>
+  <% end %>
   <nav class="footer__nav">
     <%= link_to 'Contact Us', '', class: 'footer__link' %>
     <%= link_to 'About HotDealsFinda', '', class: 'footer__link' %>

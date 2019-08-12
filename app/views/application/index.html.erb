@@ -9,11 +9,15 @@
 <section class="index__deals">
   <div class="container">
     <div class="row">
-      <div class="index__deal">
-        <%= render 'components/deal' %>
+      <% i = 0 %>
+      <% while i < 10 do %>
+        <div class="index__deal">
+          <%= render 'components/deal' %>
+        </div>
+        <% i += 1 %>
+        <% end %>
       </div>
     </div>
-  </div>
-</section>
-<hr class="gradient">
-<%= render 'components/footer' %>
+  </section>
+  <hr class="gradient">
+  <%= render 'components/footer' %>

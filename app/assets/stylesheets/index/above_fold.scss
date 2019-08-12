@@ -15,8 +15,20 @@
   }
 
   &__deal{
-    padding: 0 15px;
+    padding: 0 15px 15px;
     width: 25%;
+
+    @media (max-width: 991px){
+      width: 33.33%;
+    }
+
+    @media (max-width: 767px){
+      width: 50%;
+    }
+
+    @media (max-width: 475px){
+      width: 100%;
+    }
   }
 
   &__deals{

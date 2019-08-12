@@ -68,12 +68,20 @@
 
   &__link-lists {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 40px;
   }
 
   &__link-list {
     width: 25%;
+    @media (max-width: 575px) {
+      width: 50%;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 400px) {
+      width: 100%;
+    }
   }
 
   &__category,
@@ -114,5 +122,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    @media (max-width: 500px) {
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: center;
+    }
   }
 }
