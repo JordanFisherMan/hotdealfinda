@@ -5,10 +5,114 @@
 @import "../components/hero";
 @import "../components/locations";
 @import "../components/logo_bar";
+@import "../components/recommended";
+@import "../components/related";
+@import "../components/result";
+@import "../components/search_form_small";
 @import "../components/search_form";
+@import "../components/sort";
 
 .results {
-  &__breadcrumbs {
-    padding: 10px 0;
+  &__recommended:not(:last-child) {
+    margin-bottom: 10px;
   }
+
+  &__recommended-container {
+    margin-bottom: 20px;
+  }
+
+  &__recommended-label,
+  &__related-label {
+    font-size: 14px;
+  }
+
+  &__recommended-label,
+  &__related-label,
+  &__search-form-label {
+    margin-bottom: 10px;
+  }
+
+  &__search-form-label {
+    font-weight: 300;
+  }
+
+  &__search-form-small {
+    margin-bottom: 20px;
+  }
+
+  &__main-content {
+    padding: 20px 0 40px;
+  }
+
+  &__breadcrumbs {
+    padding: 10px 0 0;
+  }
+
+  &__breadcrumb {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+
+  &__primary,
+  &__secondary {
+    padding: 0 15px;
+  }
+
+  &__primary {
+    width: 70%;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &__secondary {
+    width: 30%;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &__position,
+  &__sort-and-filter {
+    display: flex;
+  }
+
+  &__position {
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__filter {
+    padding: 0;
+    position: relative;
+  }
+
+  &__result {
+    margin-bottom: 20px;
+  }
+}
+
+.results-tool {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: 0;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 16px;
+  padding-right: 13px;
+  color: black;
+}
+
+.drop-down-arrow {
+  width: 8px;
+  vertical-align: middle;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
 }

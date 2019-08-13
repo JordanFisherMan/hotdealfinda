@@ -1,0 +1,12 @@
+.sort {
+  display: flex;
+
+  &__label {
+    margin-right: 10px;
+  }
+
+  &__select-container {
+    margin-right: 10px;
+    position: relative;
+  }
+}

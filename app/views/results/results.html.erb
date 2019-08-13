@@ -2,11 +2,68 @@
 <%= render 'components/hero/no_heading' %>
 <section class="results__breadcrumbs">
   <div class="container">
-    <div class="breadcrumb">
-        <span class="breadcrumb__text">Search: cars</span>
-        <%= link_to '' do %>
-        <svg class="breadcrumb__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
-        <% end %>
+    <span class="results__breadcrumb">
+      <%= render 'components/breadcrumb' %>
+    </span><span class="results__breadcrumb">
+      <%= render 'components/breadcrumb' %>
+    </span>
+  </div>
+</section>
+<section class="results__main-content">
+  <div class="container">
+    <div class="row">
+      <div class="results__primary">
+        <div class="results__position">
+          <%= render 'components/position' %>
+          <div class="results__sort-and-filter">
+            <%= render 'components/sort' %>
+            <button class="results__filter results-tool">
+              <span>Filter</span>
+              <svg class="drop-down-arrow" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 320 512"><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="results__results">
+          <div class="results__result">
+            <%= render 'components/result' %>
+          </div>
+          <div class="results__result">
+            <%= render 'components/result' %>
+          </div>
+        </div>
+      </div>
+      <div class="results__secondary">
+        <h2 class="results__search-form-label">Search Local Retailers</h2>
+        <div class="results__search-form-small">
+          <%= render 'components/search_form_small' %>
+        </div>
+        <h2 class="results__recommended-label">
+          Recommended For You
+        </h2>
+        <div class="results__recommended-container">
+          <div class="results__recommended">
+            <%= render 'components/recommended' %>
+          </div>
+          <div class="results__recommended">
+            <%= render 'components/recommended' %>
+          </div>
+        </div>
+        <h2 class="results__related-label">
+          Related Searches
+        </h2>
+        <div class="results__related-container">
+          <nav class="related">
+            <div class="related__link-container">
+              <%= link_to 'related link', '', class: 'related__link' %>
+            </div>
+            <div class="related__link-container">
+              <%= link_to 'related link', '', class: 'related__link' %>
+            </div>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+<hr class="gradient">
+<%= render 'components/footer' %>

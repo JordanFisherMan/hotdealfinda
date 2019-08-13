@@ -1,0 +1,27 @@
+.related{
+
+  &__link{
+    color: $font-colour-primary;
+    font-size: 14px;
+    font-weight: 300;
+    padding-left: 10px;
+    position: relative;
+    display: block;
+
+    &:hover{
+      text-decoration: underline;
+    }
+
+    &:before{
+      content: '>';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__link-container{
+    margin-bottom: 3px;
+  }
+}

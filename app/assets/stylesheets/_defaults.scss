@@ -12,7 +12,8 @@ body{
           box-sizing: border-box;
 }
 
-input{
+input,
+select{
 
   &:focus{
     outline: 0;
@@ -78,4 +79,14 @@ hr{
 
 .gradient{
   background: linear-gradient(45deg, $green, $light-green);
+}
+
+.star {
+  width: 13px;
+  color: gold;
+}
+
+h1,
+h2{
+  margin: 0;
 }
