@@ -1,29 +1,31 @@
-<footer class="footer">
-  <div class="container">
-    <div class="footer__search-container">
-      <h2 class="footer__search-heading">Searching for something else?</h2>
-      <%= render 'components/search_form_small' %>
-</div>
-<div class="footer__link-lists">
-  <div class="footer__link-list">
-    <%= link_to 'Local', '', class: 'footer__channel' %>
-    <%= link_to 'Automotive', '', class: 'footer__category' %>
+<footer class="footer <% if defined?(hide_footer) %>footer--no-padding-top<% end %>">
+  <% if !defined?(hide_footer) %>
+    <div class="container">
+      <div class="footer__search-container">
+        <h2 class="footer__search-heading">Searching for something else?</h2>
+        <%= render 'components/search_form_small' %>
   </div>
-  <div class="footer__link-list">
-    <%= link_to 'Local', '', class: 'footer__channel' %>
-    <%= link_to 'Automotive', '', class: 'footer__category' %>
+  <div class="footer__link-lists">
+    <div class="footer__link-list">
+      <%= link_to 'Local', '', class: 'footer__channel' %>
+      <%= link_to 'Automotive', '', class: 'footer__category' %>
+    </div>
+    <div class="footer__link-list">
+      <%= link_to 'Local', '', class: 'footer__channel' %>
+      <%= link_to 'Automotive', '', class: 'footer__category' %>
+    </div>
+    <div class="footer__link-list">
+      <%= link_to 'Local', '', class: 'footer__channel' %>
+      <%= link_to 'Automotive', '', class: 'footer__category' %>
+    </div>
+    <div class="footer__link-list">
+      <%= link_to 'Local', '', class: 'footer__channel' %>
+      <%= link_to 'Automotive', '', class: 'footer__category' %>
+    </div>
   </div>
-  <div class="footer__link-list">
-    <%= link_to 'Local', '', class: 'footer__channel' %>
-    <%= link_to 'Automotive', '', class: 'footer__category' %>
   </div>
-  <div class="footer__link-list">
-    <%= link_to 'Local', '', class: 'footer__channel' %>
-    <%= link_to 'Automotive', '', class: 'footer__category' %>
-  </div>
-</div>
-</div>
-<hr class="gradient">
+  <hr class="gradient">
+<% end %>
 <div class="container">
   <%= link_to root_path do %>
   <picture class="footer__logo">
@@ -33,9 +35,9 @@
   <% end %>
   <nav class="footer__nav">
     <%= link_to 'Contact Us', '', class: 'footer__link' %>
-    <%= link_to 'About HotDealsFinda', '', class: 'footer__link' %>
-    <%= link_to 'Terms & Conditions', '', class: 'footer__link' %>
-    <%= link_to 'Privacy Policy', '', class: 'footer__link' %>
+    <%= link_to 'About HotDealsFinda', about_path, class: 'footer__link' %>
+    <%= link_to 'Terms & Conditions', terms_and_conditions_path, class: 'footer__link' %>
+    <%= link_to 'Privacy Policy', privacy_path, class: 'footer__link' %>
   </nav>
 </div>
 </footer>

@@ -3,6 +3,10 @@
   padding: 40px 0 15px;
   color: $font-colour-primary;
 
+  &--no-padding-top{
+    padding-top: 0;
+  }
+
   &__form {
     display: flex;
   }

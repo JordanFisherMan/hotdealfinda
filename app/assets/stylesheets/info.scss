@@ -1,0 +1,19 @@
+@import "variables";
+@import "defaults";
+@import "mixins";
+@import "components/logo_bar";
+@import "components/hero";
+@import "components/search_form_small";
+@import "components/search_form";
+@import "components/locations";
+@import "components/footer";
+
+.info {
+  &__main-content {
+    padding: 40px 0;
+  }
+
+  &__back {
+    color: $green;
+  }
+}
