@@ -1,8 +1,14 @@
-.categories{
+.categories {
   padding: 15px 0;
   overflow-x: scroll;
+  display: flex;
+  flex-wrap: wrap;
 
-  &__category{
+  &__list-item {
+    margin-right: 5px;
+  }
+
+  &__category {
     display: inline-block;
     color: $green;
     border: 1px solid $green;
@@ -11,12 +17,13 @@
     transition: background-color 0.2s;
     transition: color 0.2s;
 
-    &:hover{
+    &:hover {
       background-color: $button-hover;
       color: white;
+      text-decoration: none;
     }
 
-    &:active{
+    &:active {
       background-color: $button-active;
     }
   }

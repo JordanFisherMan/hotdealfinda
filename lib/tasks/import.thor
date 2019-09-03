@@ -141,6 +141,7 @@ class Import < Thor
     deal = Deal.find_or_initialize_by(deal_id: id)
     deal[:image_url] = image_url
     deal[:title] = title
+    log title
     deal[:highlights] = highlights
     deal[:price] = price
     # some deals don't seem to have an expiry so we need to allow for this

@@ -1,5 +1,7 @@
 <ul class="categories">
-  <li class="">
-    <%= link_to 'category', '', class: 'categories__category' %>
-  </li>
+  <% @channels.each do |channel| %>
+    <li class="categories__list-item">
+      <%= link_to channel[:title], channel[:link], class: 'categories__category' %>
+    </li>
+  <% end %>
 </ul>

@@ -9,12 +9,10 @@
 <section class="index__deals">
   <div class="container">
     <div class="row">
-      <% i = 0 %>
-      <% while i < 10 do %>
+      <% @deals.each do |deal| %>
         <div class="index__deal">
-          <%= render 'components/deal' %>
+          <%= render 'components/deal', deal: deal %>
         </div>
-        <% i += 1 %>
         <% end %>
       </div>
     </div>
