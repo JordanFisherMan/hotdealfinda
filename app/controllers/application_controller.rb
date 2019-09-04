@@ -4,21 +4,22 @@ class ApplicationController < ActionController::Base
     @channels = [
       {
         title: 'all',
-        link: ''
+        link: root_path(channel: 'all')
       },
       {
         title: 'local',
-        link: ''
+        link: root_path(channel: 'local')
       },
       {
         title: 'goods',
-        link: ''
+        link: root_path(channel: 'goods')
       },
       {
         title: 'travel',
-        link: ''
+        link: root_path(channel: 'travel')
       }
     ]
+    @channel = params[:channel].present? ? params[:channel] : 'all'
   end
 
   def about; end

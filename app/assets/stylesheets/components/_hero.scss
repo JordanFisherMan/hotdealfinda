@@ -1,19 +1,19 @@
-.hero{
+.hero {
   padding: 35px 0;
 
-  &--smaller{
+  &--smaller {
     padding: 10px 0;
   }
 
   &__heading,
-  &__search-form{
+  &__search-form {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
     width: 90%;
   }
 
-  &__heading{
+  &__heading {
     color: white;
     margin-top: 0;
     text-align: center;
