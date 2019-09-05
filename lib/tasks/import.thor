@@ -75,7 +75,7 @@ class Import < Thor
       @category = category
       send_ebay_request
     end
-    @base_url = 'http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=LorneDav-bestdeal-PRD-d67ac8c8b-1ab01ef2&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD=true'
+    @base_url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=LorneDav-bestdeal-PRD-d67ac8c8b-1ab01ef2&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD=true'
     @search_queries = ebay_search_queries
     @request_type = 'findItemsAdvancedResponse'
     @@search_queries.each do |query|
