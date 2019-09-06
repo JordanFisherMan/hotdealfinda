@@ -1,25 +1,25 @@
 class ApplicationController < ActionController::Base
   def index
-    @deals = Deal.all.limit(10)
-    @channels = [
-      {
-        title: 'all',
-        link: root_path(channel: 'all')
-      },
-      {
-        title: 'local',
-        link: root_path(channel: 'local')
-      },
-      {
-        title: 'goods',
-        link: root_path(channel: 'goods')
-      },
-      {
-        title: 'travel',
-        link: root_path(channel: 'travel')
-      }
-    ]
-    @channel = params[:channel].present? ? params[:channel] : 'all'
+    @categories = Category.all
+    @deals = Deal.all.limit(20)
+    @category = @categories.find_by(slug: 'all')
+    if params[:category].present?
+      record = @categories.find_by(slug: params[:category])
+      if record.present? && record.slug != 'all'
+        @category = record
+      end
+    end
+    unless @category.slug == 'all'
+      @deals = @deals.where("category LIKE '#{@category}'")
+    end
+    # move 'all' category to the front of the array
+    @categories = @categories.to_a
+    all = @categories.detect{|c| c.slug == 'all' }
+    @categories.delete(all)
+
+    @categories.unshift(all)
+    # show deals in random order
+    @deals.shuffle
   end
 
   def about; end

@@ -1,8 +1,8 @@
 <ul class="categories">
-  <% @channels.each do |channel| %>
+  <% @categories.each do |category| %>
     <li class="categories__list-item">
-      <% active = channel[:title] == @channel ? 'active' : '' %>
-      <%= link_to channel[:title], channel[:link], class: "categories__category #{active}" %>
+      <% active = category.slug == @category.slug ? 'active' : '' %>
+      <%= link_to category.slug, root_path(category: category.slug), class: "categories__category #{active}" %>
     </li>
   <% end %>
 </ul>

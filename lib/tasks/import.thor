@@ -49,6 +49,12 @@ class Import < Thor
   ['&keywords=senior&categoryId=15032', 'goods', 'health-and-beauty']
 ]
 
+desc 'remove_expired_deals', 'A task to delete all stored deals that have expired'
+  def remove_expired_deals
+    # delete deals that have expired
+    Deal.where('expiry_date < ?', Date.current).destroy_all
+  end
+
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
     operation_name = "OPERATION-NAME=findItemsByCategory&"
@@ -76,7 +82,6 @@ class Import < Thor
       send_ebay_request
     end
     @base_url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=LorneDav-bestdeal-PRD-d67ac8c8b-1ab01ef2&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD=true'
-    @search_queries = ebay_search_queries
     @request_type = 'findItemsAdvancedResponse'
     @@search_queries.each do |query|
       @url = "#{@base_url}#{query[0]}"
@@ -141,7 +146,6 @@ class Import < Thor
     deal = Deal.find_or_initialize_by(deal_id: id)
     deal[:image_url] = image_url
     deal[:title] = title
-    log title
     deal[:highlights] = highlights
     deal[:price] = price
     # some deals don't seem to have an expiry so we need to allow for this
@@ -155,6 +159,8 @@ class Import < Thor
     deal[:sort_price] = sort_price
     deal[:country_code] = country_code
     deal.save!
+    category = Category.find_or_initialize_by(slug: category)
+    category.save!
   end
 
     # output to console
