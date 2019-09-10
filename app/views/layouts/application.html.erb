@@ -20,6 +20,10 @@
   <body>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+    <% path = "#{action_name}/below_fold" %>
+    <% if Rails.application.assets.find_asset(path).present? %>
+      <%= stylesheet_link_tag path %>
+    <% end %>
     <%= stylesheet_link_tag 'below_fold' %>
   </body>
 </html>

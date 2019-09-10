@@ -1,11 +1,12 @@
 .categories {
   padding: 15px 0;
   overflow-x: scroll;
-  display: flex;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+white-space: nowrap;
 
   &__list-item {
     margin-right: 5px;
+    display: inline-block;
   }
 
   &__category {

@@ -1,4 +1,6 @@
 module ApplicationHelper
-  def tidy_title;
+  def tidy_string(string)
+    split = string.split('-')
+    split.join(' ')
   end
 end

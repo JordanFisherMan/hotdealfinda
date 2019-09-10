@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'thor'
 gem 'rest-client'
 gem 'whenever'
+gem 'will_paginate'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'

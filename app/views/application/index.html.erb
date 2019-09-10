@@ -14,6 +14,9 @@
           <%= render 'components/deal', deal: deal %>
         </div>
         <% end %>
+        <div class="index__pagination">
+          <%= will_paginate @deals %>
+        </div>
       </div>
     </div>
   </section>

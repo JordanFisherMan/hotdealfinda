@@ -57,13 +57,15 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
 
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
-    operation_name = "OPERATION-NAME=findItemsByCategory&"
-    service_version = "SERVICE-VERSION=1.0.0&"
-    security_appname = "SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f&"
-    response_data_format = "RESPONSE-DATA-FORMAT=JSON&"
-    entries_per_page = "entriesPerPage=2&"
-    rest_payload = "REST_PAYLOAD"
-    params = "#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}"
+    operation_name = "OPERATION-NAME=findItemsByCategory"
+    service_version = "&SERVICE-VERSION=1.0.0"
+    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
+    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
+    entries_per_page = "&entriesPerPage=2"
+    rest_payload = "&REST_PAYLOAD"
+    output_selector = "&outputSelector=PictureURLLarge"
+    description_search = "&descriptionSearch=false"
+    params = "#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}#{output_selector}#{description_search}"
     url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
     @base_url = "#{url_start}#{params}"
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"

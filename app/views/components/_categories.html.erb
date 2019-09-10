@@ -2,7 +2,7 @@
   <% @categories.each do |category| %>
     <li class="categories__list-item">
       <% active = category.slug == @category.slug ? 'active' : '' %>
-      <%= link_to category.slug.capitalize, root_path(category: category.slug), class: "categories__category #{active}" %>
+      <%= link_to tidy_string(category.slug).titleize, root_path(category: category.slug), class: "categories__category #{active}" %>
     </li>
   <% end %>
 </ul>
