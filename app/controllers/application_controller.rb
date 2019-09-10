@@ -20,7 +20,10 @@ class ApplicationController < ActionController::Base
     @categories.unshift(all)
     # show deals in random order
     @deals.shuffle
-
+    # keep the visible page numbers to a limit so they don't overlap
+    # on smaller screens
+    WillPaginate::ViewHelpers.pagination_options[:inner_window] = 0
+    WillPaginate::ViewHelpers.pagination_options[:outer_window] = 0
   end
 
   def about; end

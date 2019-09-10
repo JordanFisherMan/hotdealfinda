@@ -1,0 +1,27 @@
+.pagination {
+  a,
+  em,
+  span {
+    padding: 10px 15px;
+    border-radius: 22px;
+    border: 1px solid white;
+  }
+
+  a:hover,
+  em {
+    border-color: $green;
+  }
+
+  a {
+    color: $green;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .next_page {
+    display: inline-block;
+    margin-top: 15px;
+  }
+}

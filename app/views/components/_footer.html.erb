@@ -6,21 +6,11 @@
         <%= render 'components/search_form_small' %>
   </div>
   <div class="footer__link-lists">
+    <h2 class="footer__categories-heading">Categories</h2>
     <div class="footer__link-list">
-      <%= link_to 'Local', '', class: 'footer__channel' %>
-      <%= link_to 'Automotive', '', class: 'footer__category' %>
-    </div>
-    <div class="footer__link-list">
-      <%= link_to 'Local', '', class: 'footer__channel' %>
-      <%= link_to 'Automotive', '', class: 'footer__category' %>
-    </div>
-    <div class="footer__link-list">
-      <%= link_to 'Local', '', class: 'footer__channel' %>
-      <%= link_to 'Automotive', '', class: 'footer__category' %>
-    </div>
-    <div class="footer__link-list">
-      <%= link_to 'Local', '', class: 'footer__channel' %>
-      <%= link_to 'Automotive', '', class: 'footer__category' %>
+      <% @categories.each do |category| %>
+        <%= link_to tidy_string(category.slug).titleize, results_path(category: category.slug), class: 'footer__category' %>
+      <% end %>
     </div>
   </div>
   </div>
