@@ -45,6 +45,8 @@
   }
 
   &__breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
     padding: 10px 0 0;
   }
 

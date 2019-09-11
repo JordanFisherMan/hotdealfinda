@@ -1,14 +1,15 @@
 <%= render 'components/logo_bar' %>
 <%= render 'components/hero/no_heading' %>
-<section class="results__breadcrumbs">
-  <div class="container">
+<div class="container">
+  <section class="results__breadcrumbs">
     <span class="results__breadcrumb">
       <%= render 'components/breadcrumb' %>
-    </span><span class="results__breadcrumb">
+    </span>
+    <span class="results__breadcrumb">
       <%= render 'components/breadcrumb' %>
     </span>
-  </div>
-</section>
+  </section>
+</div>
 <section class="results__main-content">
   <div class="container">
     <div class="row">
@@ -24,12 +25,11 @@
           </div>
         </div>
         <div class="results__results">
-          <div class="results__result">
-            <%= render 'components/result' %>
-          </div>
-          <div class="results__result">
-            <%= render 'components/result' %>
-          </div>
+          <% @deals.each do |deal| %>
+            <div class="results__result">
+              <%= render 'components/result', deal: deal %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="results__secondary">

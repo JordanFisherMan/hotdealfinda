@@ -1,5 +1,5 @@
-<%= form_tag(method: 'get', class: 'search-form') do %>
-<%= text_field_tag 'search',nil, class:'search-form__text-field', placeholder: "Search for deals ..." %>
+<%= form_tag(results_path, method: 'get', class: 'search-form') do %>
+<%= text_field_tag 'search', params[:search] || nil, class:'search-form__text-field', placeholder: "Search for deals ..." %>
 <div class="search-form__locations-and-submit">
   <div class="search-form__primary">
     <div class="locations">

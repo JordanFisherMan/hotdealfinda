@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   def index
-    @categories = Category.all
-    @deals = Deal.all
+    fetch
     @category = @categories.find_by(slug: 'all')
     if params[:category].present?
       record = @categories.find_by(slug: params[:category])
@@ -29,4 +28,9 @@ class ApplicationController < ActionController::Base
   def about; end
 
   def terms_and_conditions; end
+
+  def fetch
+    @categories = Category.all
+    @deals = Deal.all
+  end
 end
