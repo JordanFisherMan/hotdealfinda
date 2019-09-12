@@ -2,12 +2,11 @@
 <%= render 'components/hero/no_heading' %>
 <div class="container">
   <section class="results__breadcrumbs">
-    <span class="results__breadcrumb">
-      <%= render 'components/breadcrumb' %>
-    </span>
-    <span class="results__breadcrumb">
-      <%= render 'components/breadcrumb' %>
-    </span>
+    <% if @search[:present] %>
+      <span class="results__breadcrumb">
+        <%= render 'components/breadcrumb', breadcrumb: @search %>
+      </span>
+    <% end %>
   </section>
 </div>
 <section class="results__main-content">
