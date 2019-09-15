@@ -1,8 +1,8 @@
 <div class="position">
   <span>Results</span>
-  <span>1</span>
+  <span><%= @deals.offset + 1 %></span>
   <span>-</span>
-  <span>12</span>
+  <span><%= @deals.offset + @deals.per_page %></span>
   <span>of</span>
-  <span>24</span>
+  <span><%= @deals.total_entries %></span>
 </div>
