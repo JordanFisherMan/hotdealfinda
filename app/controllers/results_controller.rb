@@ -15,10 +15,8 @@ class ResultsController < ApplicationController
     if params[:sort].present? && params[:sort] == 'price'
       @deals = @deals.order(sort_price: :asc)
     else
-      byebug
-      @deals = @deals.order(rating: :asc)
+      @deals = @deals.order(rating: :desc)
     end
     @deals = @deals.paginate(page: params[:page], per_page: 20)
-    byebug
   end
 end
