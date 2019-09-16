@@ -5,13 +5,9 @@
         <h2 class="footer__search-heading">Searching for something else?</h2>
         <%= render 'components/search_form_small' %>
   </div>
-  <div class="footer__link-lists">
+  <div class="footer__link-list">
     <h2 class="footer__categories-heading">Categories</h2>
-    <div class="footer__link-list">
-      <% @categories.each do |category| %>
-        <%= link_to tidy_string(category.slug).titleize, results_path(category: category.slug), class: 'footer__category' %>
-      <% end %>
-    </div>
+    <%= render 'components/category_list' %>
   </div>
   </div>
   <hr class="gradient">

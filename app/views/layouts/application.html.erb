@@ -19,9 +19,12 @@
   </head>
   <body>
     <%= yield %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application' %>
     <% path = "#{action_name}/below_fold" %>
-    <%= stylesheet_link_tag path %>
+    <% if asset_exists?(path) %>
+      <%= stylesheet_link_tag path %>
+    <% end %>
     <%= stylesheet_link_tag 'below_fold' %>
   </body>
 </html>

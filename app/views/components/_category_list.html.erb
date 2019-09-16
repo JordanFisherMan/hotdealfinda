@@ -1,0 +1,6 @@
+<div class="category-list">
+  <% classes = classes.present? ? classes : '' %>
+  <% @categories.each do |category| %>
+    <%= link_to tidy_string(category.slug).titleize, results_path(category: category.slug), class: "category-list__category #{classes}" %>
+  <% end %>
+</div>

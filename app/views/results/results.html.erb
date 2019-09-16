@@ -17,13 +17,16 @@
           <%= render 'components/position' %>
           <div class="results__sort-and-filter">
             <%= render 'components/sort' %>
-            <button class="results__filter results-tool">
+            <button id="js-filter" class="results__filter results-tool">
               <span>Filter</span>
               <svg class="drop-down-arrow" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 320 512"><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"/></svg>
             </button>
           </div>
         </div>
         <div class="results__results">
+          <div id="js-categories" class="results__categories">
+            <%= render 'components/category_list', classes: 'category-list__category--3-col' %>
+          </div>
           <% @deals.each do |deal| %>
             <div class="results__result">
               <%= render 'components/result', deal: deal %>

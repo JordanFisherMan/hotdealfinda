@@ -13,6 +13,10 @@
 @import "../components/sort";
 
 .results {
+  &__categories{
+    display: none;
+    padding: 0 0 30px;
+  }
   &__recommended:not(:last-child) {
     margin-bottom: 10px;
   }
