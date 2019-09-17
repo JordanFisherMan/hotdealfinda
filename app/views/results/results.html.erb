@@ -7,6 +7,11 @@
         <%= render 'components/breadcrumb', breadcrumb: @search %>
       </span>
     <% end %>
+    <% if @category[:present] %>
+      <span class="results__breadcrumb">
+        <%= render 'components/breadcrumb', breadcrumb: @category %>
+      </span>
+    <% end %>
   </section>
 </div>
 <section class="results__main-content">
@@ -46,24 +51,22 @@
           Recommended For You
         </h2>
         <div class="results__recommended-container">
-          <div class="results__recommended">
-            <%= render 'components/recommended' %>
-          </div>
-          <div class="results__recommended">
-            <%= render 'components/recommended' %>
-          </div>
+          <% @recommended_deals.each do |deal| %>
+            <div class="results__recommended">
+              <%= render 'components/recommended', deal: deal %>
+            </div>
+          <% end %>
         </div>
         <h2 class="results__related-label">
           Related Searches
         </h2>
         <div class="results__related-container">
           <nav class="related">
-            <div class="related__link-container">
-              <%= link_to 'related link', '', class: 'related__link' %>
-            </div>
-            <div class="related__link-container">
-              <%= link_to 'related link', '', class: 'related__link' %>
-            </div>
+            <% @related_searches.each do |search| %>
+              <div class="related__link-container">
+                <%= link_to search, results_path(search: search), class: 'related__link' %>
+              </div>
+            <% end %>
           </nav>
         </div>
       </div>

@@ -1,0 +1,10 @@
+.image-container{
+  position: relative;
+  padding-top: 60%;
+
+  &--lg{
+    @media (max-width: 991px){
+      padding-top: 80%;
+    }
+  }
+}
