@@ -13,6 +13,11 @@ class ResultsController < ApplicationController
       title: 'Category',
       query: category_query
     }
+    @sort = {
+      present: params[:sort].present?,
+      title: 'Sort',
+      query: params[:sort] || ''
+    }
     if params[:search].present? && params[:search] != ''
       @deals = @deals.where("title ILIKE '%#{params[:search]}%' OR highlights ILIKE '%#{params[:search]}%'")
     end
@@ -28,6 +33,13 @@ class ResultsController < ApplicationController
     # paginate deals
     @deals = @deals.paginate(page: params[:page], per_page: 20)
     @related_searches = %w[Teeth Car Paint Cheap Beauty Luxury Nails Massage Spa]
+    @current_filters = []
+    if @search[:present]
+      @current_filters.push(@search)
+    end
+    if @category[:present]
+      @current_filters.push(@category)
+    end
   end
 
   private

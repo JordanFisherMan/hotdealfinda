@@ -2,15 +2,12 @@
 <%= render 'components/hero/no_heading' %>
 <div class="container">
   <section class="results__breadcrumbs">
-    <% if @search[:present] %>
-      <span class="results__breadcrumb">
-        <%= render 'components/breadcrumb', breadcrumb: @search %>
-      </span>
-    <% end %>
-    <% if @category[:present] %>
-      <span class="results__breadcrumb">
-        <%= render 'components/breadcrumb', breadcrumb: @category %>
-      </span>
+    <% @current_filters.each do |filter| %>
+      <% if filter[:present] %>
+        <span class="results__breadcrumb">
+          <%= render 'components/breadcrumb', breadcrumb: filter %>
+        </span>
+      <% end %>
     <% end %>
   </section>
 </div>
@@ -30,7 +27,7 @@
         </div>
         <div class="results__results">
           <div id="js-categories" class="results__categories">
-            <%= render 'components/category_list', classes: 'category-list__category--3-col' %>
+            <%= render 'components/category_list/category_list_filter', classes: 'category-list__category--3-col' %>
           </div>
           <% @deals.each do |deal| %>
             <div class="results__result">
