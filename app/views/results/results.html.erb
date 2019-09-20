@@ -29,13 +29,13 @@
           <div id="js-categories" class="results__categories">
             <%= render 'components/category_list/category_list_filter', classes: 'category-list__category--3-col' %>
           </div>
-          <% @deals.each do |deal| %>
+          <% @results.each do |deal| %>
             <div class="results__result">
               <%= render 'components/result', deal: deal %>
             </div>
           <% end %>
           <div class="results__pagination">
-            <%= will_paginate @deals %>
+            <%= will_paginate @results %>
           </div>
         </div>
       </div>

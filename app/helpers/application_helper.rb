@@ -18,12 +18,25 @@ module ApplicationHelper
   end
 
   # takes a filter to avoid and sends the params for all of the rest
-  def current_filters(new_filter = nil)
+  def replace_filter(new_filter = nil)
     filters = @current_filters.map{ |filter|
       unless filter[:title] == new_filter
         "&#{filter[:title].downcase}=#{filter[:query]}"
       end
     }
     filters.join
+  end
+
+  def remove_filter(remove_filter)
+    filters = @current_filters.map{ |filter|
+      unless filter[:title] == remove_filter
+        "#{filter[:title].downcase}=#{filter[:query]}"
+      end
+    }
+    if filters.join('&') == ""
+      return ""
+    else
+      return "?#{filters.join('&')}"
+    end
   end
 end
