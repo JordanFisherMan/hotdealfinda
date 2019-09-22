@@ -5,8 +5,9 @@ class ResultsController < ApplicationController
 
   def results
     fetch
+    countries_dropdown
     @search = {
-      present: params[:search].present?,
+      present: params[:search].present? && params[:search] != '',
       title: 'Search',
       query: params[:search] || ''
     }
@@ -20,17 +21,23 @@ class ResultsController < ApplicationController
       title: 'Sort',
       query: params[:sort] || ''
     }
+    @location = if params[:location].present?
+                  params[:location]
+                elsif !@deals.where(country_code: session[:country_code]).empty?
+                  session[:country_code]
+                else
+                  'US'
+end
     query = []
-    if params[:search].present? && params[:search] != ''
-      query.push("(title ILIKE '%#{params[:search]}%' OR highlights ILIKE '%#{params[:search]}%')")
+    query.push("country_code LIKE '#{@location}'")
+    if @search[:present]
+      query.push("(title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%')")
     end
-    if params[:category].present? && params[:category] != ''
-      add_on = query.empty? ? '' : ' AND '
-      query.push("#{add_on}category LIKE '#{params[:category]}'")
+    if @category[:present] && @category[:query] != 'all'
+      query.push("category LIKE '#{@category[:query]}'")
     end
-    @results = @deals.where(query.join(''))
+    @results = @deals.where(query.join(' AND '))
     limit_page_numbers
-    @location = ''
     @results = if params[:sort].present? && params[:sort] == 'price'
                  @results.order(sort_price: :asc)
                else

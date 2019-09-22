@@ -1,7 +1,7 @@
 <div class="recommended" onclick="window.open('<%= deal.url %>', '_blank');">
   <div class="recommended__primary">
     <div class="image-container image-container--lg">
-      <%= image_tag deal.image_url, class: 'image-fill' %>
+      <img class="lazy image-fill" src="" data-src="<%= deal.image_url %>" alt="" title="">
     </div>
   </div>
   <div class="recommended__secondary">

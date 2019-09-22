@@ -29,10 +29,16 @@
           <div id="js-categories" class="results__categories">
             <%= render 'components/category_list/category_list_filter', classes: 'category-list__category--3-col' %>
           </div>
-          <% @results.each do |deal| %>
-            <div class="results__result">
-              <%= render 'components/result', deal: deal %>
-            </div>
+          <% unless @results.empty? %>
+            <% @results.each do |deal| %>
+              <div class="results__result">
+                <%= render 'components/result', deal: deal %>
+              </div>
+            <% end %>
+          <% else %>
+            <h2>No Results.</h2>
+            <p>Perhaps you should try one of these searches:</p>
+            <%= render 'components/related' %>
           <% end %>
           <div class="results__pagination">
             <%= will_paginate @results %>
@@ -58,13 +64,7 @@
           Related Searches
         </h2>
         <div class="results__related-container">
-          <nav class="related">
-            <% @related_searches.each do |search| %>
-              <div class="related__link-container">
-                <%= link_to search, results_path(search: search), class: 'related__link' %>
-              </div>
-            <% end %>
-          </nav>
+          <%= render 'components/related' %>
         </div>
       </div>
     </div>

@@ -1,22 +1,32 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   def index
     fetch
+    countries_dropdown
+    session[:country] ||= Geocoder.search(request.remote_ip)
+    @location = if params[:location].present?
+                  params[:location]
+                elsif !@deals.where(country_code: session[:country_code]).empty?
+                  session[:country_code]
+                else
+                  'US'
+end
     @category = @categories.find_by(slug: 'all')
     if params[:category].present?
       record = @categories.find_by(slug: params[:category])
-      if record.present? && record.slug != 'all'
-        @category = record
-      end
+      @category = record if record.present? && record.slug != 'all'
     end
     unless @category.slug == 'all'
       @deals = @deals.where("category LIKE '#{@category.slug}'")
     end
-    @deals = @deals.paginate(page: params[:page], per_page: 20).order("RANDOM()")
-    # move 'all' category to the front of the array
-    @categories = @categories.to_a
-    all = @categories.detect{|c| c.slug == 'all' }
-    @categories.delete(all)
-    @categories.unshift(all)
+    @deals = @deals.paginate(page: params[:page], per_page: 20).order('RANDOM()')
+    # separate categories for tabs and put 'all' at the front
+    @category_tabs = @categories
+    @category_tabs = @category_tabs.to_a
+    all = @category_tabs.detect { |c| c.slug == 'all' }
+    @category_tabs.delete(all)
+    @category_tabs.unshift(all)
     # show deals in random order
     @deals.shuffle
     limit_page_numbers
@@ -36,5 +46,14 @@ class ApplicationController < ActionController::Base
   def limit_page_numbers
     WillPaginate::ViewHelpers.pagination_options[:inner_window] = 0
     WillPaginate::ViewHelpers.pagination_options[:outer_window] = 0
+  end
+
+  private
+
+  def countries_dropdown
+    @countries_dropdown = @deals.map do |d|
+      [d.country_code, d.country_code]
+    end
+    @countries_dropdown.uniq!
   end
 end

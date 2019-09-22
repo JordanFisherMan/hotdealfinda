@@ -24,7 +24,7 @@ module ApplicationHelper
         "&#{filter[:title].downcase}=#{filter[:query]}"
       end
     }
-    filters.join
+    filters.compact.join
   end
 
   def remove_filter(remove_filter)
@@ -33,10 +33,10 @@ module ApplicationHelper
         "#{filter[:title].downcase}=#{filter[:query]}"
       end
     }
-    if filters.join('&') == ""
+    if filters.compact.join('&') == ""
       return ""
     else
-      return "?#{filters.join('&')}"
+      return filters.compact.join('&')
     end
   end
 end

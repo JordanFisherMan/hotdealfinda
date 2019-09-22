@@ -4,20 +4,20 @@
       <div class="footer__search-container">
         <h2 class="footer__search-heading">Searching for something else?</h2>
         <%= render 'components/search_form_small' %>
-  </div>
-  <div class="footer__link-list">
-    <h2 class="footer__categories-heading">Categories</h2>
-    <%= render 'components/category_list/category_list' %>
-  </div>
-  </div>
-  <hr class="gradient">
-<% end %>
-<div class="container">
-  <%= link_to root_path do %>
-  <picture class="footer__logo">
-    <source srcset="<%= image_path 'logo.webp' %>" type="image/webp" alt="" class="footer__logo-image">
-    <%= image_tag 'logo.png', class: 'footer__logo-image' %>
-  </picture>
+      </div>
+      <div class="footer__link-list">
+        <h2 class="footer__categories-heading">Categories</h2>
+        <%= render 'components/category_list/category_list' %>
+      </div>
+    </div>
+    <hr class="gradient">
+  <% end %>
+  <div class="container">
+    <%= link_to root_path do %>
+    <picture class="footer__logo">
+      <source srcset="<%= image_path 'logo.webp' %>" type="image/webp" alt="" class="footer__logo-image">
+      <%= image_tag 'logo.png', class: 'footer__logo-image' %>
+    </picture>
   <% end %>
   <nav class="footer__nav">
     <%= link_to 'Contact Us', '', class: 'footer__link' %>

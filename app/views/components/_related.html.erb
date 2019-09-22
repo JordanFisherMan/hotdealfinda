@@ -1,0 +1,7 @@
+<nav class="related">
+  <% @related_searches.each do |search| %>
+    <div class="related__link-container">
+      <%= link_to search, results_path(search: search), class: 'related__link' %>
+    </div>
+  <% end %>
+</nav>
