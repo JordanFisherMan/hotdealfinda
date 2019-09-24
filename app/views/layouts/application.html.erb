@@ -21,6 +21,7 @@
     <%= yield %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application' %>
+    <script data-ad-client="ca-pub-9099077473256435" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <% path = "#{action_name}/below_fold" %>
     <% if asset_exists?(path) %>
       <%= stylesheet_link_tag path %>
