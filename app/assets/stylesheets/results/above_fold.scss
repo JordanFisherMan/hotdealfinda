@@ -14,10 +14,11 @@
 @import "../components/sort";
 
 .results {
-  &__categories{
+  &__categories {
     display: none;
     padding: 0 0 30px;
   }
+
   &__recommended:not(:last-child) {
     margin-bottom: 10px;
   }
@@ -80,14 +81,23 @@
     }
   }
 
-  &__position,
+  &__position-and-sort,
   &__sort-and-filter {
     display: flex;
   }
 
   &__position {
+    @media (max-width: 500px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__position-and-sort {
     justify-content: space-between;
     margin-bottom: 20px;
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
   }
 
   &__filter {
