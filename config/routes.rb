@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'about', to: 'info#about'
   get 'terms-and-conditions', to: 'info#terms_and_conditions', as: :terms_and_conditions
   get 'privacy', to: 'info#privacy'
+  get 'contact', to: 'info#contact'
 end

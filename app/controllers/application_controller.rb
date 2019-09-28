@@ -38,11 +38,6 @@ class ApplicationController < ActionController::Base
 
   def terms_and_conditions; end
 
-  def fetch
-    @categories = Category.all
-    @deals = Deal.all
-  end
-
   # keep the visible page numbers to a limit so they don't overlap
   # on smaller screens
   def limit_page_numbers
@@ -51,6 +46,19 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def fetch
+    fetch_deals
+    fetch_categories
+  end
+
+  def fetch_deals
+    @deals = Deal.all
+  end
+
+  def fetch_categories
+    @categories = Category.all
+  end
 
   def countries_dropdown
     @countries_dropdown = @deals.map do |d|
