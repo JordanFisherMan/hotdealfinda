@@ -46,7 +46,9 @@ class Import < Thor
   ['&keywords=public%20record%20office', 'goods', 'collectibles'],
   ['&keywords=denture%20implants', 'goods', 'health-and-beauty'],
   ['&keywords=denture%20implants&categoryId=267', 'goods', 'health-and-beauty'],
-  ['&keywords=senior&categoryId=15032', 'goods', 'health-and-beauty']
+  ['&keywords=senior&categoryId=15032', 'goods', 'health-and-beauty'],
+  ['&keywords=zombieland%20shirt', 'goods', 't-shirts'],
+  ['&keywords=greta%20thunberg%20shirt', 'goods', 't-shirts']
 ]
 
 desc 'remove_expired_deals', 'A task to delete all stored deals that have expired'
@@ -63,9 +65,8 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
     security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
     response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
     entries_per_page = "&entriesPerPage=2"
-    rest_payload = "&REST_PAYLOAD"
-    output_selector = "&outputSelector=PictureURLLarge"
-    params = "#{operation_name}#{tracking_id}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}#{output_selector}"
+    rest_payload = "&REST_PAYLOAD=true"
+    params = "#{operation_name}#{tracking_id}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}"
     url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
     @base_url = "#{url_start}#{params}"
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
@@ -83,7 +84,17 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       @category = category
       send_ebay_request
     end
-    @base_url = 'https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD=true'
+
+    operation_name = "OPERATION-NAME=findItemsAdvanced"
+    tracking_id = "&trackingId=5338584772"
+    service_version = "&SERVICE-VERSION=1.0.0"
+    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
+    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
+    entries_per_page = "&entriesPerPage=2"
+    rest_payload = "&REST_PAYLOAD=true"
+    tracking_id = "&trackingId=5338584772"
+    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
+    @base_url = "#{url_start}#{operation_name}#{tracking_id}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
     @request_type = 'findItemsAdvancedResponse'
     @@search_queries.each do |query|
       @url = "#{@base_url}#{query[0]}"
