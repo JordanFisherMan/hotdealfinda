@@ -70,8 +70,8 @@ set :app_server, true
 set :app_server_socket, "#{shared_path}/tmp/sockets/puma.sock"
 set :app_server_host, "127.0.0.1"
 
-# set :whenever_variables, -> {
-#   "\'environment=#{fetch :whenever_environment}" \
-#   "&rvm_path=#{fetch :rvm_path}/bin/rvm" \
-#   "&rvm_ruby_version=#{fetch(:rvm_ruby_version)}\'"
-# }
+set :whenever_variables, -> {
+  "\'environment=#{fetch :whenever_environment}" \
+  # "&rvm_path=#{fetch :rvm_path}/bin/rvm" \
+  # "&rvm_ruby_version=#{fetch(:rvm_ruby_version)}\'"
+}

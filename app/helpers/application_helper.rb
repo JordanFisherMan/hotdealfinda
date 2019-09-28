@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def asset_exists?(path)
-    if defined?(Rails.env.production)
+    if defined?(Rails.env.production) && Rails.env.production?
       if Rails.configuration.assets.compile
         Rails.application.precompiled_assets.include? path
       else
