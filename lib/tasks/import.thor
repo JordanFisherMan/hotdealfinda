@@ -48,7 +48,13 @@ class Import < Thor
   ['&keywords=denture%20implants&categoryId=267', 'goods', 'health-and-beauty'],
   ['&keywords=senior&categoryId=15032', 'goods', 'health-and-beauty'],
   ['&keywords=zombieland%20shirt', 'goods', 't-shirts'],
-  ['&keywords=greta%20thunberg%20shirt', 'goods', 't-shirts']
+  ['&keywords=greta%20thunberg%20shirt', 'goods', 't-shirts'],
+  ['&keywords=xbox%20one', 'goods', 'video-game-consoles'],
+  ['&keywords=crackdown%203', 'goods', 'video-games'],
+  ['&keywords=halo%20reach', 'goods', 'video-games'],
+  ['&keywords=zoo%20tycoon', 'goods', 'video-games'],
+  ['&keywords=xbox%20gift%20card', 'goods', 'video-games'],
+  ['&keywords=elite%20controller', 'goods', 'video-games-accessories']
 ]
 
 desc 'remove_expired_deals', 'A task to delete all stored deals that have expired'

@@ -27,7 +27,7 @@ class ResultsController < ApplicationController
                   session[:country_code]
                 else
                   'US'
-end
+                end
     query = []
     query.push("country_code LIKE '#{@location}'")
     if @search[:present]
@@ -51,7 +51,12 @@ end
     end
     # paginate deals
     @results = @results.paginate(page: params[:page], per_page: 20)
-    @related_searches = %w[Teeth Car Paint Cheap Beauty Luxury Nails Massage Spa]
+    @related_searches = if @search[:present] && @search[:query] == 'xbox one'
+       ['xbox live', 'xbox one x', 'xbox one controller', 'xbox live gold', 'crackdown 3', 'zoo tycoon', 'halo reach', 'xbox gift card', 'elite controller']
+    else
+      %w[Teeth Car Paint Cheap Beauty Luxury Nails Massage Spa]
+    end
+
     @current_filters = []
     @current_filters.push(@search) if @search[:present]
     @current_filters.push(@category) if @category[:present]
