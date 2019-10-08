@@ -12,23 +12,12 @@ class ApplicationController < ActionController::Base
                 else
                   'US'
                 end
-    if params[:category].present? && params[:category] != 'all'
+    if params[:category].present?
       record = @categories.find_by(slug: params[:category])
-      @category = if record.present?
-                    record
-                  else
-                    Category.new(slug: 'all')
-                end
+      @category = record if record.present?
       @deals = @deals.where("category LIKE '#{@category.slug}'")
-    else
-      @category = Category.new(slug: 'all')
     end
     @deals = @deals.paginate(page: params[:page], per_page: 20).order('RANDOM()')
-    # separate categories for tabs and put 'all' at the front
-    @category_tabs = @categories
-    @category_tabs = @category_tabs.to_a
-    all = Category.new(slug: 'all')
-    @category_tabs.unshift(all)
     # show deals in random order
     @deals.shuffle
     limit_page_numbers

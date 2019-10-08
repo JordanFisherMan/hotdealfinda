@@ -1,8 +1,14 @@
 <ul class="categories">
-  <% @category_tabs.each do |category| %>
+  <% @categories.each do |category| %>
     <li class="categories__list-item">
-      <% active = category.slug == @category.slug ? 'active' : '' %>
-      <%= link_to tidy_string(category.slug).titleize, root_path(category: category.slug), class: "categories__category #{active}" %>
+      <% if params[:category].present? && params[:category] == category.slug %>
+        <% active = 'active' %>
+        <% path = root_path %>
+      <% else %>
+        <% active = '' %>
+        <% path = root_path(category: category.slug) %>
+      <% end %>
+      <%= link_to tidy_string(category.slug).titleize, path, class: "categories__category #{active}" %>
     </li>
   <% end %>
 </ul>
