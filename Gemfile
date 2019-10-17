@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'thor'
 gem 'rest-client'
-gem 'whenever'
+gem 'whenever', require: false
 gem 'will_paginate'
 gem 'geocoder'
 
