@@ -26,6 +26,7 @@ gem 'rest-client'
 gem 'whenever', require: false
 gem 'will_paginate'
 gem 'geocoder'
+gem 'rubyzip'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
