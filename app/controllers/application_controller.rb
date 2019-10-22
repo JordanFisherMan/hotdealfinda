@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   def index
     fetch
     countries_dropdown
+    affiliate_id
+    gclid
     session[:country] ||= Geocoder.search(request.remote_ip)
     @location = if params[:location].present?
                   params[:location]
@@ -54,5 +56,13 @@ class ApplicationController < ActionController::Base
       [d.country_code, d.country_code]
     end
     @countries_dropdown.uniq!
+  end
+
+  def affiliate_id
+    @affiliate_id = "5575531951"
+  end
+
+  def gclid
+    @gclid = "&customid=#{params[:gclid]}" || ""
   end
 end

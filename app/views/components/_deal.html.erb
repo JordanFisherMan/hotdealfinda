@@ -1,4 +1,4 @@
-<div class="deal" onclick="window.open('<%= deal.url %>', '_blank');">
+<div class="deal" onclick="window.open('<%= "#{deal.url}#{@affiliate_id}#{@gclid}" %>', '_blank');">
   <div class="deal__image">
     <div class="image-container">
       <img class="lazy image-fill" src="" data-src="<%= deal.image_url %>" alt="" title="">

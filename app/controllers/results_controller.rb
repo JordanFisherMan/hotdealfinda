@@ -6,6 +6,8 @@ class ResultsController < ApplicationController
   def results
     fetch
     countries_dropdown
+    affiliate_id
+    gclid
     @search = {
       present: params[:search].present? && params[:search] != '',
       title: 'Search',
@@ -28,6 +30,7 @@ class ResultsController < ApplicationController
                 else
                   'US'
                 end
+
     query = []
     query.push("country_code LIKE '#{@location}'")
     if @search[:present]
