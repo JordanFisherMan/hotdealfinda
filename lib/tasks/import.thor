@@ -61,6 +61,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
   def remove_expired_deals
     # delete deals that have expired
     Deal.where('expiry_date < ?', Date.current).destroy_all
+    log "[EBAY import:remove_expired_deals] Finished - #{Time.now}"
   end
 
   desc 'fetch', 'A task to fetch the latest deals from Ebay'

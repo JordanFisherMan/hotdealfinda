@@ -18,6 +18,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+set :rbenv_root, '/opt/rbenv'
+set :rbenv_version, '2.3.3'
+env 'RBENV_ROOT', rbenv_root
+env 'RBENV_VERSION', rbenv_version
 set :environment, "production"
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 

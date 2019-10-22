@@ -72,6 +72,6 @@ set :app_server_host, "127.0.0.1"
 
 set :whenever_variables, -> {
   "\'environment=#{fetch :whenever_environment}" \
-  # "&rvm_path=#{fetch :rvm_path}/bin/rvm" \
-  # "&rvm_ruby_version=#{fetch(:rvm_ruby_version)}\'"
+  "&rbenv_root=#{fetch :rbenv_custom_path}" \
+  "&rbenv_version=#{fetch :rbenv_ruby}'"
 }
