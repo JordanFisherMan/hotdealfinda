@@ -20,12 +20,10 @@
 # Learn more: http://github.com/javan/whenever
 set :rbenv_root, '/opt/rbenv'
 set :rbenv_version, '2.3.3'
-env 'RBENV_ROOT', :rbenv_root
-env 'RBENV_VERSION', :rbenv_version
 set :environment, "production"
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 
-job_type :thor, 'cd :path && :environment_variable=:environment :RBENV_ROOT :RBENV_VERSION do bundle exec thor :task :output'
+job_type :thor, 'cd :path && :environment_variable=:environment :rbenv_root :rbenv_version do bundle exec thor :task :output'
 
 set :output,   standard: Rails.root.join('log', "#{@environment}_cron.log"),
                error: Rails.root.join('log', "#{@environment}_cron_error.log")
