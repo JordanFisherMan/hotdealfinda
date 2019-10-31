@@ -22,11 +22,12 @@
 # set :rbenv_version, '2.3.3'
 # set :environment, "production"
 
+require File.expand_path(File.dirname(__FILE__) + '/environment')
+
+job_type :thor, 'cd :path && :environment_variable=:environment :rbenv_version do bundle exec thor :task :output'
+
 set :output,   standard: "log/#{@environment}_cron.log",
                error: "log/#{@environment}_cron_error.log"
-
-job_type :thor, 'cd :path && :environment_variable=:environment :rbenv_root :rbenv_version do bundle exec thor :task :output'
-
 every 6.hours do
   thor 'import:fetch'
 end
