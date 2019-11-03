@@ -28,10 +28,10 @@ job_type :thor, 'cd :path && :environment_variable=:environment :rbenv_path :rbe
 
 set :output,   standard: "log/#{@environment}_cron.log",
                error: "log/#{@environment}_cron_error.log"
-every 6.hours do
+every 1.minute do
   thor 'import:fetch'
 end
 
-every 1.days, at: '12:00 am' do
+every 1.minute, at: '12:00 am' do
   thor 'import:remove_expired_deals'
 end
