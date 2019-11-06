@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def affiliate_id
-    @affiliate_id = "5575531951"
+    @affiliate_id = "?trackingId=5338584772"
   end
 
   def gclid

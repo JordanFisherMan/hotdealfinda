@@ -2,8 +2,7 @@ require './config/environment'
 require 'rest-client'
 class Import < Thor
  @@goods_categories = [
-  ['auto-and-home-improvement', '34998'],
-  ['auto-and-home-improvement', '43983'], # Tire Deals
+  ['auto-and-home-improvement', '159907'],
   ['baby-kids-and-toys', '2984'],
   ['baby-kids-and-toys', '220'],
   %w[collectibles 1],
@@ -17,10 +16,7 @@ class Import < Thor
   ['for-the-home', '11700'],
   ['for-the-home', '159907'],
   ['groceries-household-and-pets', '1281'],
-  ['groceries-household-and-pets', '66780'],  # dog food
-  ['groceries-household-and-pets', '63073'],  # cat food
   ['health-and-beauty', '26395'],
-  ['health-and-beauty', '31413'], # Hair loss treatments
   ['health-and-beauty', '110633'], # artisan jewellery
   ['jewelry-and-watches', '281'],
   ['mens-clothing-shoes-and-accessories', '1059'],
@@ -32,29 +28,21 @@ class Import < Thor
   ['womens-clothing-shoes-and-accessories', '3034']
 ]
 
-@@travel_categories = [
-  ['cruise-travel', '16078'],
-  ['tour-travel', '3256'], # vacation packages with air
-  ['tour-travel', '29578'], # vacation packages without air
-  ['hotels-and-accommodations', '164802'], # campground and rv parks
-  ['hotels-and-accomodations', '16123'] # lodging
-]
-
 @@search_queries = [
-  ['&keywords=colon%20cancer&categoryId=1059', 'goods', 'for-the-home'],
-  ['&keywords=bikini%20line%20hair%20removal', 'goods', 'health-and-beauty'],
-  ['&keywords=public%20record%20office', 'goods', 'collectibles'],
-  ['&keywords=denture%20implants', 'goods', 'health-and-beauty'],
-  ['&keywords=denture%20implants&categoryId=267', 'goods', 'health-and-beauty'],
-  ['&keywords=senior&categoryId=15032', 'goods', 'health-and-beauty'],
-  ['&keywords=zombieland%20shirt', 'goods', 't-shirts'],
-  ['&keywords=greta%20thunberg%20shirt', 'goods', 't-shirts'],
-  ['&keywords=xbox%20one', 'goods', 'video-game-consoles'],
-  ['&keywords=crackdown%203', 'goods', 'video-games'],
-  ['&keywords=halo%20reach', 'goods', 'video-games'],
-  ['&keywords=zoo%20tycoon', 'goods', 'video-games'],
-  ['&keywords=xbox%20gift%20card', 'goods', 'video-games'],
-  ['&keywords=elite%20controller', 'goods', 'video-games-accessories']
+  ['&keywords=xbox%20one', 'video-game-consoles'],
+  ['&keywords=crackdown%203', 'video-games'],
+  ['&keywords=halo%20reach',  'video-games'],
+  ['&keywords=zoo%20tycoon',  'video-games'],
+  ['&keywords=xbox%20gift%20card',  'video-games'],
+  ['&keywords=elite%20controller',  'video-games-accessories'],
+  ['&keywords=colon%20cancer',  'for-the-home'],
+  ['&keywords=bikini%20line%20hair%20removal',  'health-and-beauty'],
+  ['&keywords=public%20record%20office',  'collectibles'],
+  ['&keywords=denture%20implants',  'health-and-beauty'],
+  ['&keywords=denture%20implants&categoryId=267',  'health-and-beauty'],
+  ['&keywords=senior&categoryId=15032',  'health-and-beauty'],
+  ['&keywords=zombieland%20shirt',  't-shirts'],
+  ['&keywords=greta%20thunberg%20shirt',  't-shirts'],
 ]
 
 desc 'remove_expired_deals', 'A task to delete all stored deals that have expired'
@@ -66,49 +54,40 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
 
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
-    operation_name = "OPERATION-NAME=findItemsByCategory"
-    tracking_id = "&trackingId=5338584772"
-    service_version = "&SERVICE-VERSION=1.0.0"
-    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
-    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
-    entries_per_page = "&entriesPerPage=2"
-    rest_payload = "&REST_PAYLOAD=true"
-    params = "#{operation_name}#{tracking_id}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}"
-    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
-    @base_url = "#{url_start}#{params}"
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
-    @request_type = 'findItemsByCategoryResponse'
-    @@goods_categories.each do |category|
-      @url = "#{@base_url}&categoryId=#{category[1]}"
-      @channel = 'goods'
-      @category = category
-      send_ebay_request
-    end
-
-    @@travel_categories.each do |category|
-      @url = "#{@base_url}&categoryId=#{category[1]}"
-      @channel = 'travel'
-      @category = category
-      send_ebay_request
-    end
 
     operation_name = "OPERATION-NAME=findItemsAdvanced"
-    tracking_id = "&trackingId=5338584772"
     service_version = "&SERVICE-VERSION=1.0.0"
     security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
     response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
     entries_per_page = "&entriesPerPage=2"
     rest_payload = "&REST_PAYLOAD=true"
-    tracking_id = "&trackingId=5338584772"
     url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
-    @base_url = "#{url_start}#{operation_name}#{tracking_id}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
+    @base_url = "#{url_start}#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
     @request_type = 'findItemsAdvancedResponse'
     @@search_queries.each do |query|
       @url = "#{@base_url}#{query[0]}"
-      @channel = query[1]
-      @category = query[2]
+      @category = query[1]
       send_ebay_request
     end
+
+    operation_name = "OPERATION-NAME=findItemsByCategory"
+    service_version = "&SERVICE-VERSION=1.0.0"
+    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
+    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
+    entries_per_page = "&entriesPerPage=2"
+    rest_payload = "&REST_PAYLOAD=true"
+    params = "#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}"
+    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
+    @base_url = "#{url_start}#{params}"
+
+    @request_type = 'findItemsByCategoryResponse'
+    @@goods_categories.each do |category|
+      @url = "#{@base_url}&categoryId=#{category[1]}"
+      @category = category
+      send_ebay_request
+    end
+
     log "[EBAY IMPORT:FETCH] Finished - #{Time.now}"
   end
 
@@ -143,7 +122,6 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       item['listingInfo'].first['endTime'][0],
       item['viewItemURL'].first,
       @category[0],
-      @channel,
       item['country'].first,
       item['sellingStatus'][0]['currentPrice'][0]['__value__'],
       item['country'].first
@@ -159,7 +137,6 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       expiry_date,
       url,
       category,
-      channel,
       division,
       sort_price,
       country_code)
@@ -173,7 +150,6 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
     deal[:expiry_date] = expiry_date
     deal[:url] = url
     deal[:category] = category
-    deal[:channel] = channel
     deal[:division] = division
     deal[:rating] = rand < 0.2 ? 5 : 4
     deal[:sort_price] = sort_price
