@@ -11,7 +11,7 @@ set :application, "hotdealsfinda"
 set :repo_url, "git@github.com:JordanFisherMan/hotdealsfinda.git"
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.6.3'
-set :rbenv_path, '/home/deploy/.rbenv'
+set :rbenv_path, '~/.rbenv/bin/rbenv'
 
 # in case you want to set ruby version from the file:
 # set :rbenv_ruby, File.read('.ruby-version').strip
