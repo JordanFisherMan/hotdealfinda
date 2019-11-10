@@ -24,7 +24,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 
-job_type :thor, 'cd :path && :environment_variable=:environment :rbenv_path :rbenv_version do bundle exec thor :task :output'
+# job_type :thor, 'puts "rbenv_path: #{:rbenv_path}"; cd :path && :environment_variable=:environment :rbenv_path :rbenv_version do bundle exec thor :task :output'
 
 set :output,   standard: "log/#{@environment}_cron.log",
                error: "log/#{@environment}_cron_error.log"
