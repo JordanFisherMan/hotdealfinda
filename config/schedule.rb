@@ -24,14 +24,14 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/environment')
 
-job_type :thor, 'puts "rbenv_path: #{:rbenv_path}"; cd :path && :environment_variable=:environment :rbenv_path :rbenv_version do bundle exec thor :task :output'
+job_type :thor, 'cd :path && :environment_variable=:environment :rbenv_path :rbenv_version do bundle exec thor :task :output'
 
 set :output,   standard: "log/#{@environment}_cron.log",
                error: "log/#{@environment}_cron_error.log"
-every 1.minute do
+every 1.day do
   thor 'import:fetch'
 end
 
-every 1.minute, at: '12:00 am' do
+every 1.day, at: '12:00 am' do
   thor 'import:remove_expired_deals'
 end

@@ -10,6 +10,7 @@ set :deploy_to, '/home/deploy/hotdealsfinda'
 set :application, "hotdealsfinda"
 set :repo_url, "git@github.com:JordanFisherMan/hotdealsfinda.git"
 set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_path, '.rbenv/bin/rbenv'
 set :rbenv_ruby, '2.6.3'
 
 # in case you want to set ruby version from the file:
@@ -71,6 +72,6 @@ set :app_server_host, "127.0.0.1"
 
 set :whenever_variables, -> {
   "\'environment=#{fetch :whenever_environment}" \
-  "&rbenv_path=#{fetch :rbenv_path}/bin/rbenv" \
+  "&rbenv_path=#{fetch :rbenv_path}" \
   "&rbenv_version=#{fetch :rbenv_ruby}\'" \
 }
