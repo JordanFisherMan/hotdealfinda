@@ -8,10 +8,10 @@ server 'hotdealsfinda.com', user: 'deploy', roles: %w{web app db}
    forward_agent: false,
    auth_methods: %w(publickey password)
  }
- 
-# set :nginx_ssl_certificate_path, '/etc/letsencrypt/live/bestdealfinda.com'
-# set :nginx_ssl_certificate_key_path, "/etc/letsencrypt/live/bestdealfinda.com"
-# set :deploy_to, '/home/deploy/bestdealfinda'
+
+set :nginx_ssl_certificate_path, '/etc/letsencrypt/live/hotdealsfinda.com'
+set :nginx_ssl_certificate_key_path, "/etc/letsencrypt/live/hotdealsfinda.com"
+set :deploy_to, '/home/deploy/hotdealsfinda'
 
 # server-based syntax
 # ======================

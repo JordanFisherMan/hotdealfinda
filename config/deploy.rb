@@ -55,7 +55,7 @@ set :logtail_lines, 50
 
 set :logrotate_template_path, "#{stage_config_path}/templates/logrotate.erb"
 
-# set :nginx_template, "#{stage_config_path}/templates/nginx.conf.erb"
+set :nginx_template, "#{stage_config_path}/templates/nginx.conf.erb"
 set :nginx_template, :default
 # set :nginx_service_path, "/etc/init.d/nginx"
 set :nginx_roles, :web
