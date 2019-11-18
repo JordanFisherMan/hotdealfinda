@@ -9,6 +9,7 @@
   </head>
   <body>
     <%= yield %>
+    <%= render 'shared/google_tag_manager' %>
     <%= render 'shared/google_analytics' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application' %>
