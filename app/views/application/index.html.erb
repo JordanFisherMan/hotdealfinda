@@ -11,9 +11,17 @@
     <div class="row">
       <% i = 0 %>
       <% @deals.each do |deal| %>
-      <div class="index__deal">
-        <%= render 'components/deal', deal: deal %>
-      </div>
+      <% if i == 15 %>
+        <div class="index__deal">
+          <%= render 'components/ad' %>
+        </div>
+        <% i = 0 %>
+      <% else %>
+        <div class="index__deal">
+          <%= render 'components/deal', deal: deal %>
+        </div>
+        <% i += 1 %>
+      <% end %>
         <% end %>
         <div class="index__pagination">
           <%= will_paginate @deals %>
