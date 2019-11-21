@@ -141,7 +141,14 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       sort_price,
       country_code)
     deal = Deal.find_or_initialize_by(deal_id: id)
-    deal[:image_url] = image_url
+    # get a higher quality image for the product
+    url = "http://open.api.ebay.com/shopping?ItemID=#{id}&callname=GetSingleItem&responseencoding=JSON&appid=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f&version=967"
+    image_json = ebay_send_url(url)
+    deal[:image_url] = if defined?(image_json['item']['PictureURL'][0])
+                          image_json['item']['PictureURL'][0]
+                        else
+                          image_url
+                        end
     deal[:title] = title
     deal[:highlights] = highlights
     deal[:price] = price
