@@ -123,6 +123,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       item['viewItemURL'].first,
       @category[0],
       item['country'].first,
+      item['topRatedListing'][0],
       item['sellingStatus'][0]['currentPrice'][0]['__value__'],
       item['country'].first
     )
@@ -138,6 +139,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       url,
       category,
       division,
+      rating,
       sort_price,
       country_code)
     deal = Deal.find_or_initialize_by(deal_id: id)
@@ -154,7 +156,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
     deal[:url] = url
     deal[:category] = category
     deal[:division] = division
-    deal[:rating] = rand < 0.2 ? 5 : 4
+    deal[:rating] = rating
     deal[:sort_price] = sort_price
     deal[:country_code] = country_code
     deal.save!

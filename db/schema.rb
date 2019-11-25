@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_085402) do
+ActiveRecord::Schema.define(version: 2019_11_25_090100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_085402) do
     t.date "expiry_date", null: false
     t.string "category"
     t.string "division", null: false
-    t.integer "rating", null: false
+    t.string "rating", null: false
     t.float "sort_price", null: false
     t.string "country_code", null: false
     t.datetime "created_at", null: false

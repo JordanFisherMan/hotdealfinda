@@ -20,7 +20,18 @@
     overflow-y: hidden;
   }
 
-  &__rating {
-    margin-bottom: 5px;
+  &__topratedlisting {
+    visibility: hidden;
+    font-size: 9px;
+    background: $green;
+    color: white;
+    padding: 3px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+
+    &--visible{
+      visibility: visible;
+    }
   }
 }
