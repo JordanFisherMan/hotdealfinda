@@ -1,13 +1,13 @@
 <div class="result" data-deal-id="<%= deal.id %>">
   <div class="result__primary">
     <div class="image-container">
-      <img class="lazy image-fill" src="" data-src="<%= deal.image_url %>" alt="" title="">
+      <%= link_to "#{deal.url}#{@affiliate_id}#{@gclid}", target: '_blank' do %>
+        <img class="lazy image-fill" src="" data-src="<%= deal.image_url %>" alt="" title="">
+      <% end %>
     </div>
   </div>
   <div class="result__secondary">
-    <div class="result__title">
-      <%= deal.title %>
-    </div>
+    <%= link_to deal.title, "#{deal.url}#{@affiliate_id}#{@gclid}", target: '_blank', class: 'result__title' %>
     <div class="result__description">
       <%= deal.highlights %>
     </div>
