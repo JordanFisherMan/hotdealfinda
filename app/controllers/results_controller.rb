@@ -63,6 +63,11 @@ class ResultsController < ApplicationController
     @current_filters = []
     @current_filters.push(@search) if @search[:present]
     @current_filters.push(@category) if @category[:present]
+
+    # target page title
+    if @search[:present] && @search[:query] == 'xbox one'
+      @title = "Xbox One Deals"
+    end
   end
 
   private

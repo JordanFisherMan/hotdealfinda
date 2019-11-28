@@ -1,6 +1,7 @@
 .image-container{
   position: relative;
   padding-top: 60%;
+  overflow: hidden;
 
   &--lg{
     @media (max-width: 991px){

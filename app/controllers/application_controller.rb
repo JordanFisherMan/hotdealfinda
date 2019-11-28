@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  before_action :title
   def index
     fetch
     countries_dropdown
@@ -64,5 +65,9 @@ class ApplicationController < ActionController::Base
 
   def gclid
     @gclid = "&customid=#{params[:gclid]}" || ""
+  end
+
+  def title
+    @title = "Hotdealsfinda"
   end
 end

@@ -2,6 +2,7 @@
   display: flex;
   @media (max-width: 500px){
     flex-direction: column;
+    border: 1px solid $border-colour;
   }
 
   &__primary,
@@ -23,6 +24,7 @@
     width: 60%;
     @media (max-width: 500px) {
       width: 100%;
+      padding: 0 15px;
     }
   }
 
@@ -30,6 +32,7 @@
     width: 20%;
     @media (max-width: 500px) {
       width: 100%;
+      padding: 0 15px 15px;
     }
   }
 
