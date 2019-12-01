@@ -33,7 +33,9 @@ class ResultsController < ApplicationController
 
     query = []
     query.push("country_code LIKE '#{@location}'")
-    if @search[:present]
+    if @search[:present] && @search[:query] == 'xbox one'
+      query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%' OR highlights ILIKE '%xbox one%')")
+    elsif @search[:present]
       query.push("(title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%')")
     end
     if @category[:present] && @category[:query] != 'all'
