@@ -1,13 +1,13 @@
 <div class="result" data-deal-id="<%= deal.id %>">
   <div class="result__primary">
     <div class="image-container">
-      <%= link_to "#{deal.url}#{@affiliate_id}#{@gclid}", target: '_blank' do %>
+      <%= link_to "#{deal.url}#{@affiliate_id}#{@camp_id}#{@gclid}", target: '_blank' do %>
         <img class="lazy image-fill image-fill--natural-xs" src="" data-src="<%= deal.image_url %>" alt="" title="">
       <% end %>
     </div>
   </div>
   <div class="result__secondary">
-    <%= link_to deal.title, "#{deal.url}#{@affiliate_id}#{@gclid}", target: '_blank', class: 'result__title' %>
+    <%= link_to deal.title, "#{deal.url}#{@affiliate_id}#{@camp_id}#{@gclid}", target: '_blank', class: 'result__title' %>
     <div class="result__description">
       <%= deal.highlights %>
     </div>
@@ -19,6 +19,6 @@
     <div class="result__topratedlisting <% if deal.rating == "true" %>result__topratedlisting--visible<% end %>">
       top rated listing
     </div>
-    <%= link_to '> Go To Deal', "#{deal.url}#{@affiliate_id}#{@gclid}", class: 'result__link', target: '_blank' %>
+    <%= link_to '> Go To Deal', "#{deal.url}#{@affiliate_id}#{@camp_id}#{@gclid}", class: 'result__link', target: '_blank' %>
   </div>
 </div>

@@ -61,6 +61,7 @@ class ApplicationController < ActionController::Base
 
   def affiliate_id
     @affiliate_id = "?trackingId=5338584772"
+    @camp_id = "&campid=5338584772"
   end
 
   def gclid
