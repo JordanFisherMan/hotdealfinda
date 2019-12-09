@@ -4,6 +4,10 @@
   overflow-x: scroll;
 white-space: nowrap;
 
+&--shorter{
+  padding: 7px 0;
+}
+
   &__list-item {
     margin-right: 5px;
     display: inline-block;

@@ -2,6 +2,7 @@
 @import "../defaults";
 @import "../mixins";
 @import "../components/breadcrumb";
+@import "../components/categories";
 @import "../components/hero";
 @import "../components/image_container";
 @import "../components/image_fill";
@@ -54,7 +55,6 @@
   &__breadcrumbs {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px 0 0;
   }
 
   &__breadcrumb {

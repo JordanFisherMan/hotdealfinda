@@ -1,6 +1,9 @@
 <%= render 'components/logo_bar' %>
 <%= render 'components/hero/no_heading' %>
 <div class="container">
+  <%= render 'components/categories', shorter: true %>
+</div>
+<div class="container">
   <section class="results__breadcrumbs">
     <% @current_filters.each do |filter| %>
       <% if filter[:present] %>

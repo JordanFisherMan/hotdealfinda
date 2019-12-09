@@ -1,4 +1,4 @@
-<ul class="categories">
+<ul class="categories <% if defined?(shorter) %>categories--shorter<% end %>">
   <% @categories.each do |category| %>
     <li class="categories__list-item">
       <% if params[:category].present? && params[:category] == category.slug %>
