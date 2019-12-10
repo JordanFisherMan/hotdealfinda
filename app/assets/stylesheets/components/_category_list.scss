@@ -11,22 +11,28 @@
     font-weight: 300;
     font-size: 13px;
     color: $font-colour-primary;
-    @media (max-width: 991px){
+
+    &--3-col{
       width: 33.33%;
     }
-    @media (max-width: 620px){
-      width: 50%;
-    }
-    @media (max-width: 375px){
-      width: 100%;
+
+    &,
+    &--3-col{
+      @media (max-width: 991px){
+        width: 33.33%;
+      }
+      @media (max-width: 620px){
+        width: 50%;
+      }
+      @media (max-width: 375px){
+        width: 100%;
+      }
     }
 
     &:hover {
       text-decoration: underline;
     }
 
-    &--3-col{
-      width: 33.33%;
-    }
+
   }
 }

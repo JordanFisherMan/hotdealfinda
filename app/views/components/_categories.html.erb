@@ -6,7 +6,7 @@
         <% path = root_path %>
       <% else %>
         <% active = '' %>
-        <% path = root_path(category: category.slug) %>
+        <% path = results_path(category: category.slug) %>
       <% end %>
       <%= link_to tidy_string(category.slug).titleize, path, class: "categories__category #{active}" %>
     </li>
