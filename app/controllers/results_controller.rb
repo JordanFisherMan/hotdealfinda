@@ -38,8 +38,8 @@ class ResultsController < ApplicationController
     elsif @search[:present]
       query.push("(title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%')")
     end
-    if @category[:present] && @category[:query] != 'all'
-      query.push("category LIKE '#{@category[:query]}'")
+    if params[:category].present? && @category[:query] != 'all'
+      query.push("category LIKE '#{params[:category]}'")
     end
     @results = @deals.where(query.join(' AND '))
     limit_page_numbers
