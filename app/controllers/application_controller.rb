@@ -26,9 +26,10 @@ class ApplicationController < ActionController::Base
     limit_page_numbers
   end
 
-  def about; end
-
-  def terms_and_conditions; end
+  def categories
+    fetch
+    countries_dropdown
+   end
 
   # keep the visible page numbers to a limit so they don't overlap
   # on smaller screens
@@ -60,15 +61,15 @@ class ApplicationController < ActionController::Base
   end
 
   def affiliate_id
-    @affiliate_id = "?trackingId=5338584772"
-    @camp_id = "&campid=5338584772"
+    @affiliate_id = '?trackingId=5338584772'
+    @camp_id = '&campid=5338584772'
   end
 
   def gclid
-    @gclid = "&customid=#{params[:gclid]}" || ""
+    @gclid = "&customid=#{params[:gclid]}" || ''
   end
 
   def title
-    @title = "Hotdealsfinda"
+    @title = 'Hotdealsfinda'
   end
 end

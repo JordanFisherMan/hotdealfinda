@@ -1,0 +1,8 @@
+<div class="index__logo-bar">
+  <%= render 'components/logo_bar' %>
+</div>
+<%= render 'components/hero/heading' %>
+<% @categories.each do |category| %>
+  <%= tidy_string(category.slug).titleize %>
+<% end %>
+<%= render 'components/footer' %>
