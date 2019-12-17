@@ -1,8 +1,9 @@
-<div class="index__logo-bar">
-  <%= render 'components/logo_bar' %>
-</div>
+<%= render 'components/logo_bar' %>
 <%= render 'components/hero/heading' %>
-<% @categories.each do |category| %>
-  <%= tidy_string(category.slug).titleize %>
-<% end %>
+<div class="categories__content">
+  <div class="container">
+    <h1 class="categories__heading">Categories</h1>
+    <%= render 'components/categories-bar' %>
+  </div>
+</div>
 <%= render 'components/footer' %>

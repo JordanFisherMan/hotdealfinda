@@ -1,6 +1,9 @@
-<ul class="categories <% if defined?(shorter) %>categories--shorter<% end %>">
+<ul class="categories-bar
+<% if defined?(one_line) %>categories-bar--one-line<% end %>
+<% if defined?(shorter) %>categories-bar--shorter<% end %>
+">
   <% @categories.each do |category| %>
-    <li class="categories__list-item">
+    <li class="categories-bar__list-item">
       <% if params[:category].present? && params[:category] == category.slug %>
         <% active = 'active' %>
         <% path = root_path %>
@@ -8,7 +11,7 @@
         <% active = '' %>
         <% path = results_path(category: category.slug) %>
       <% end %>
-      <%= link_to tidy_string(category.slug).titleize, path, class: "categories__category #{active}" %>
+      <%= link_to tidy_string(category.slug).titleize, path, class: "categories-bar__category #{active}" %>
     </li>
   <% end %>
 </ul>

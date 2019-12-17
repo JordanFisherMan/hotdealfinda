@@ -10,6 +10,9 @@
   &__categories-heading {
     font-size: 17px;
     margin-bottom: 10px;
+    color: $font-colour-primary;
+    display: inline-block;
+    font-weight: 600;
   }
 
   &__form {

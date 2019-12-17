@@ -1,12 +1,14 @@
-.categories {
+.categories-bar {
   padding: 15px 0;
-  overflow-x: scroll;
-  overflow-x: scroll;
-white-space: nowrap;
 
-&--shorter{
-  padding: 7px 0;
-}
+  &--one-line {
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  &--shorter {
+    padding: 7px 0;
+  }
 
   &__list-item {
     margin-right: 5px;
@@ -21,8 +23,8 @@ white-space: nowrap;
     transition: color 0.2s;
     border-radius: 5px;
 
-    &:hover,
-    &.active {
+    &.active,
+    &:hover {
       color: white;
     }
 

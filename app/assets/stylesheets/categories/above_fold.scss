@@ -1,7 +1,7 @@
 @import "../variables";
 @import "../defaults";
 @import "../mixins";
-@import "../components/categories";
+@import "../components/categories-bar";
 @import "../components/deal";
 @import "../components/hero";
 @import "../components/image_container";
@@ -9,3 +9,20 @@
 @import "../components/locations";
 @import "../components/logo_bar";
 @import "../components/search_form";
+
+.categories{
+  &__content{
+    padding: 30px 0;
+  }
+  &__heading{
+    margin-bottom: 20px;
+  }
+  &__category{
+    display: inline-block;
+    color: $green;
+    padding: 5px;
+    transition: background-color 0.2s;
+    transition: color 0.2s;
+    border-radius: 5px;
+  }
+}
