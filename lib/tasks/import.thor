@@ -33,6 +33,7 @@ class Import < Thor
   ['&keywords=crackdown%203', 'video-games'],
   ['&keywords=halo%20reach',  'video-games'],
   ['&keywords=zoo%20tycoon',  'video-games'],
+  ['&keywords=skyrim', 'video-games'],
   ['&keywords=xbox%20gift%20card',  'video-games'],
   ['&keywords=elite%20controller',  'video-games-accessories'],
   ['&keywords=colon%20cancer',  'for-the-home'],
