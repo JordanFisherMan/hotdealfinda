@@ -57,7 +57,7 @@ class ResultsController < ApplicationController
     # paginate deals
     @results = @results.paginate(page: params[:page], per_page: 20)
     @related_searches = if @search[:present] && @search[:query] == 'xbox one'
-       ['xbox live', 'xbox one x', 'xbox one controller', 'xbox live gold', 'crackdown 3', 'zoo tycoon', 'halo reach', 'xbox gift card', 'elite controller']
+       ['xbox live', 'xbox one x', 'xbox one controller', 'xbox live gold', 'crackdown 3', 'zoo tycoon', 'halo reach', 'xbox gift card', 'elite controller', 'skyrim']
     else
       %w[Teeth Car Paint Cheap Beauty Luxury Nails Massage Spa]
     end
