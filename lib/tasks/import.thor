@@ -2,6 +2,10 @@ require './config/environment'
 require 'rest-client'
 class Import < Thor
  @@goods_categories = [
+   ['video-game-manuals','182174'],
+   ['video-game-strategy-guides','156595'],
+   ['xbox-one-games','54968'],
+   ['xbox-one-accessories','139973'],
   ['auto-and-home-improvement', '159907'],
   ['baby-kids-and-toys', '2984'],
   ['baby-kids-and-toys', '220'],
@@ -57,21 +61,6 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
   def fetch
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
 
-    operation_name = "OPERATION-NAME=findItemsAdvanced"
-    service_version = "&SERVICE-VERSION=1.0.0"
-    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
-    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
-    entries_per_page = "&entriesPerPage=2"
-    rest_payload = "&REST_PAYLOAD=true"
-    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
-    @base_url = "#{url_start}#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
-    @request_type = 'findItemsAdvancedResponse'
-    @@search_queries.each do |query|
-      @url = "#{@base_url}#{query[0]}"
-      @category = query[1]
-      send_ebay_request
-    end
-
     operation_name = "OPERATION-NAME=findItemsByCategory"
     service_version = "&SERVICE-VERSION=1.0.0"
     security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
@@ -88,6 +77,24 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       @category = category
       send_ebay_request
     end
+
+
+    operation_name = "OPERATION-NAME=findItemsAdvanced"
+    service_version = "&SERVICE-VERSION=1.0.0"
+    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
+    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
+    entries_per_page = "&entriesPerPage=2"
+    rest_payload = "&REST_PAYLOAD=true"
+    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
+    @base_url = "#{url_start}#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
+    @request_type = 'findItemsAdvancedResponse'
+    @@search_queries.each do |query|
+      @url = "#{@base_url}#{query[0]}"
+      @category = query[1]
+      send_ebay_request
+    end
+
+
 
     log "[EBAY IMPORT:FETCH] Finished - #{Time.now}"
   end
