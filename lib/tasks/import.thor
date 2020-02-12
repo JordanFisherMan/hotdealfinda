@@ -2,9 +2,9 @@ require './config/environment'
 require 'rest-client'
 class Import < Thor
  @@goods_categories = [
+   ['xbox-one-games','54968'],
    ['video-game-manuals','182174'],
    ['video-game-strategy-guides','156595'],
-   ['xbox-one-games','54968'],
    ['xbox-one-accessories','139973'],
   ['auto-and-home-improvement', '159907'],
   ['baby-kids-and-toys', '2984'],
@@ -32,22 +32,23 @@ class Import < Thor
   ['womens-clothing-shoes-and-accessories', '3034']
 ]
 
+# ['&keywords=crackdown%203', 'video-games'],
+# ['&keywords=halo%20reach',  'video-games'],
+# ['&keywords=zoo%20tycoon',  'video-games'],
+# ['&keywords=skyrim', 'video-games'],
 @@search_queries = [
-  ['&keywords=xbox%20one', 'video-game-consoles'],
-  ['&keywords=crackdown%203', 'video-games'],
-  ['&keywords=halo%20reach',  'video-games'],
-  ['&keywords=zoo%20tycoon',  'video-games'],
-  ['&keywords=skyrim', 'video-games'],
-  ['&keywords=xbox%20gift%20card',  'video-games'],
-  ['&keywords=elite%20controller',  'video-games-accessories'],
-  ['&keywords=colon%20cancer',  'for-the-home'],
-  ['&keywords=bikini%20line%20hair%20removal',  'health-and-beauty'],
-  ['&keywords=public%20record%20office',  'collectibles'],
-  ['&keywords=denture%20implants',  'health-and-beauty'],
-  ['&keywords=denture%20implants&categoryId=267',  'health-and-beauty'],
-  ['&keywords=senior&categoryId=15032',  'health-and-beauty'],
-  ['&keywords=zombieland%20shirt',  't-shirts'],
-  ['&keywords=greta%20thunberg%20shirt',  't-shirts'],
+  ['video-games', '&keywords=xbox%20one%20games'],
+  ['video-game-consoles','&keywords=xbox%20one'],
+  ['video-games','&keywords=xbox%20gift%20card'],
+  ['video-games-accessories','&keywords=elite%20controller'],
+  ['for-the-home','&keywords=colon%20cancer'],
+  ['health-and-beauty','&keywords=bikini%20line%20hair%20removal'],
+  ['collectibles','&keywords=public%20record%20office'],
+  ['health-and-beauty','&keywords=denture%20implants'],
+  ['health-and-beauty','&keywords=denture%20implants&categoryId=267'],
+  ['health-and-beauty','&keywords=senior&categoryId=15032'],
+  ['t-shirts','&keywords=zombieland%20shirt'],
+  ['t-shirts','&keywords=greta%20thunberg%20shirt'],
 ]
 
 desc 'remove_expired_deals', 'A task to delete all stored deals that have expired'
@@ -60,6 +61,21 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
+
+    operation_name = "OPERATION-NAME=findItemsAdvanced"
+    service_version = "&SERVICE-VERSION=1.0.0"
+    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
+    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
+    entries_per_page = "&entriesPerPage=2"
+    rest_payload = "&REST_PAYLOAD=true"
+    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
+    @base_url = "#{url_start}#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
+    @request_type = 'findItemsAdvancedResponse'
+    @@search_queries.each do |query|
+      @url = "#{@base_url}#{query[1]}"
+      @category = query[0]
+      send_ebay_request
+    end
 
     operation_name = "OPERATION-NAME=findItemsByCategory"
     service_version = "&SERVICE-VERSION=1.0.0"
@@ -74,27 +90,9 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
     @request_type = 'findItemsByCategoryResponse'
     @@goods_categories.each do |category|
       @url = "#{@base_url}&categoryId=#{category[1]}"
-      @category = category
+      @category = category[0]
       send_ebay_request
     end
-
-
-    operation_name = "OPERATION-NAME=findItemsAdvanced"
-    service_version = "&SERVICE-VERSION=1.0.0"
-    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
-    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
-    entries_per_page = "&entriesPerPage=2"
-    rest_payload = "&REST_PAYLOAD=true"
-    url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
-    @base_url = "#{url_start}#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
-    @request_type = 'findItemsAdvancedResponse'
-    @@search_queries.each do |query|
-      @url = "#{@base_url}#{query[0]}"
-      @category = query[1]
-      send_ebay_request
-    end
-
-
 
     log "[EBAY IMPORT:FETCH] Finished - #{Time.now}"
   end
@@ -129,7 +127,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       format('$%2.2f', item['sellingStatus'][0]['currentPrice'][0]['__value__']),
       item['listingInfo'].first['endTime'][0],
       item['viewItemURL'].first,
-      @category[0],
+      @category,
       item['country'].first,
       item['topRatedListing'][0],
       item['sellingStatus'][0]['currentPrice'][0]['__value__'],
