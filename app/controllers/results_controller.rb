@@ -35,9 +35,13 @@ class ResultsController < ApplicationController
     query.push("country_code LIKE '#{@location}'")
     if @search[:present]
       if @search[:query] == 'xbox one'
-        query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%' OR highlights ILIKE '%xbox one%')")
+        query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%')")
       elsif @search[:query] == 'xbox one games'
         query.push("(category LIKE 'video-games' AND title NOT ILIKE '%gift card%' AND title NOT ILIKE '%giftcard%')")
+      elsif @search[:query] == 'xbox one accessories'
+        query.push("(category LIKE 'xbox-one-accessories' AND title NOT ILIKE '%no accessories%' AND title NOT ILIKE '%console%')")
+      elsif @search[:query] == 'xbox one x'
+        query.push("(title ILIKE '%xbox one x%' AND title ILIKE '%console%')")
       elsif @search[:present]
         query.push("(title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%')")
       end
@@ -62,8 +66,10 @@ class ResultsController < ApplicationController
     end
     # paginate deals
     @results = @results.paginate(page: params[:page], per_page: 20)
-    if @search[:present] && @search[:query] == 'xbox one'
-      @related_searches = ['xbox live', 'xbox one x', 'xbox one controller', 'xbox live gold', 'crackdown 3', 'zoo tycoon', 'halo reach', 'xbox gift card', 'elite controller', 'skyrim']
+    if @search[:present] && xbox_related_search
+      xbox_related_searches = ['xbox live', 'xbox one x', 'xbox one controller', 'xbox gift card', 'elite controller', 'xbox one accessories']
+      xbox_related_searches.delete(@search[:query])
+      @related_searches = xbox_related_searches
     else
       @related_searches = %w[Teeth Car Paint Cheap Beauty Luxury Nails Massage Spa]
     end
@@ -86,5 +92,18 @@ class ResultsController < ApplicationController
     else
       ''
     end
+  end
+
+  def xbox_related_search
+    @search[:query] == 'xbox one' ||
+    @search[:query] == 'xbox one games' ||
+    @search[:query] == 'xbox one accessories' ||
+    @search[:query] == 'xbox one strategy guides' ||
+    @search[:query] == 'xbox live' ||
+    @search[:query] == 'xbox one x' ||
+    @search[:query] == 'xbox one controller' ||
+    @search[:query] == 'xbox gift card' ||
+    @search[:query] == 'xbox one elite controller' ||
+    @search[:query] == 'xbox one accessories'
   end
 end

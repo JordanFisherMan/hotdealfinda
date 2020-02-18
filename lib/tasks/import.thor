@@ -5,7 +5,6 @@ class Import < Thor
    ['xbox-one-games','54968'],
    ['video-game-manuals','182174'],
    ['video-game-strategy-guides','156595'],
-   ['xbox-one-accessories','139973'],
   ['auto-and-home-improvement', '159907'],
   ['baby-kids-and-toys', '2984'],
   ['baby-kids-and-toys', '220'],
@@ -37,6 +36,10 @@ class Import < Thor
 # ['&keywords=zoo%20tycoon',  'video-games'],
 # ['&keywords=skyrim', 'video-games'],
 @@search_queries = [
+  ['xbox-live-gold', 'xbox%20live%20gold%20months'],
+  ['xbox-one-game-manuals', '&keywords=xbox%20one%20game%20manuals'],
+  ['xbox-one-strategy-guides', '&keywords=xbox%20one%20strategy%20guides'],
+  ['xbox-one-accessories', '&keywords=xbox%20one%20accessories'],
   ['video-games', '&keywords=xbox%20one%20games'],
   ['video-game-consoles','&keywords=xbox%20one'],
   ['video-games','&keywords=xbox%20gift%20card'],
