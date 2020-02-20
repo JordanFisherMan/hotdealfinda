@@ -42,6 +42,10 @@ class ResultsController < ApplicationController
         query.push("(category LIKE 'xbox-one-accessories' AND title NOT ILIKE '%no accessories%' AND title NOT ILIKE '%console%')")
       elsif @search[:query] == 'xbox one x'
         query.push("(title ILIKE '%xbox one x%' AND title ILIKE '%console%')")
+      elsif @search[:query] == 'xbox one controller'
+        query.push("(category LIKE 'xbox-one-controller')")
+      elsif @search[:query] == 'xbox one elite controller'
+        query.push("((title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%') AND title NOT ILIKE '%accessories%' AND title NOT ILIKE '%bumpers%' AND title NOT ILIKE '%kit%')")
       elsif @search[:present]
         query.push("(title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%')")
       end
@@ -67,7 +71,7 @@ class ResultsController < ApplicationController
     # paginate deals
     @results = @results.paginate(page: params[:page], per_page: 20)
     if @search[:present] && xbox_related_search
-      xbox_related_searches = ['xbox live', 'xbox one x', 'xbox one controller', 'xbox gift card', 'elite controller', 'xbox one accessories']
+      xbox_related_searches = ['xbox live', 'xbox one x', 'xbox one controller', 'xbox gift card', 'xbox one elite controller', 'xbox one accessories']
       xbox_related_searches.delete(@search[:query])
       @related_searches = xbox_related_searches
     else

@@ -36,7 +36,8 @@ class Import < Thor
 # ['&keywords=zoo%20tycoon',  'video-games'],
 # ['&keywords=skyrim', 'video-games'],
 @@search_queries = [
-  ['xbox-live-gold', 'xbox%20live%20gold%20months'],
+  ['xbox-one-controller', '&keywords=xbox%20one%20controller'],
+  ['xbox-live-gold', '&keywords=xbox%20live%20gold%20months'],
   ['xbox-one-game-manuals', '&keywords=xbox%20one%20game%20manuals'],
   ['xbox-one-strategy-guides', '&keywords=xbox%20one%20strategy%20guides'],
   ['xbox-one-accessories', '&keywords=xbox%20one%20accessories'],
@@ -64,7 +65,6 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
-
     operation_name = "OPERATION-NAME=findItemsAdvanced"
     service_version = "&SERVICE-VERSION=1.0.0"
     security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
