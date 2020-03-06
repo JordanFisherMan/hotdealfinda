@@ -36,11 +36,11 @@ class Import < Thor
 # ['&keywords=zoo%20tycoon',  'video-games'],
 # ['&keywords=skyrim', 'video-games'],
 @@search_queries = [
+  ['xbox-one-accessories', '&keywords=xbox%20one%20accessories'],
   ['xbox-one-controller', '&keywords=xbox%20one%20controller'],
   ['xbox-live-gold', '&keywords=xbox%20live%20gold%20months'],
   ['xbox-one-game-manuals', '&keywords=xbox%20one%20game%20manuals'],
   ['xbox-one-strategy-guides', '&keywords=xbox%20one%20strategy%20guides'],
-  ['xbox-one-accessories', '&keywords=xbox%20one%20accessories'],
   ['video-games', '&keywords=xbox%20one%20games'],
   ['video-game-consoles','&keywords=xbox%20one'],
   ['video-games','&keywords=xbox%20gift%20card'],

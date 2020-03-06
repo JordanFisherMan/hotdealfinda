@@ -39,7 +39,7 @@ class ResultsController < ApplicationController
       elsif @search[:query] == 'xbox one games'
         query.push("(category LIKE 'video-games' AND title NOT ILIKE '%gift card%' AND title NOT ILIKE '%giftcard%')")
       elsif @search[:query] == 'xbox one accessories'
-        query.push("(category LIKE 'xbox-one-accessories' AND title NOT ILIKE '%no accessories%' AND title NOT ILIKE '%console%')")
+        query.push("(category LIKE 'xbox-one-accessories' AND title NOT ILIKE '%no accessories%' AND title NOT ILIKE '%console%' AND title NOT ILIKE '%Xbox One XBOX-ONE(XB1)%')")
       elsif @search[:query] == 'xbox one x'
         query.push("(title ILIKE '%xbox one x%' AND title ILIKE '%console%')")
       elsif @search[:query] == 'xbox one controller'

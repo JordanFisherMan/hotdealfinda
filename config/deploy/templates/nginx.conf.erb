@@ -56,7 +56,7 @@ server {
 
 <% if fetch(:app_server) && (fetch(:app_server_socket) || fetch(:app_server_port))%>
   location ^~ /assets/ {
-    gzip_static off;
+    gzip_static on;
     expires max;
     add_header Cache-Control public;
     add_header Access-Control-Allow-Origin *;
