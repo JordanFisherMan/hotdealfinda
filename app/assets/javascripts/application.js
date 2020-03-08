@@ -13,11 +13,24 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
-$(function() {
-    $('#js-filter').click(function() {
-        $('#js-categories').slideToggle();
-    });
-});
+
+
+var filter = document.getElementById("js-filter");
+if(typeof(filter) != 'undefined' && filter != null){
+  // Where el is the DOM element you'd like to test for visibility
+  function isHidden(el) {
+      return (el.offsetParent === null)
+  }
+  var categories = document.getElementById("js-categories");
+  filter.addEventListener("click", function(){
+    if(isHidden(categories)){
+      categories.style.display = "block";
+    } else {
+      categories.style.display = "none";
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
     if ("IntersectionObserver" in window) {
