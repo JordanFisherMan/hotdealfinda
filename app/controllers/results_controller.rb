@@ -35,7 +35,7 @@ class ResultsController < ApplicationController
     query.push("country_code LIKE '#{@location}'")
     if @search[:present]
       if @search[:query] == 'xbox one'
-        query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%')")
+        query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%' AND title NOT ILIKE '%remote%')")
       elsif @search[:query] == 'xbox one games'
         query.push("(category LIKE 'video-games' AND title NOT ILIKE '%gift card%' AND title NOT ILIKE '%giftcard%')")
       elsif @search[:query] == 'xbox one accessories'
@@ -53,6 +53,7 @@ class ResultsController < ApplicationController
     if params[:category].present? && @category[:query] != 'all'
       query.push("category LIKE '#{params[:category]}'")
     end
+
     @results = @deals.where(query.join(' AND '))
     if @search[:present] && @search[:query] == 'xbox one games'
       @results = @results.order("random()")
