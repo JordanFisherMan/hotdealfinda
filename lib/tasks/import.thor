@@ -65,14 +65,18 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
-    operation_name = "OPERATION-NAME=findItemsAdvanced"
     service_version = "&SERVICE-VERSION=1.0.0"
     security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
     response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
     entries_per_page = "&entriesPerPage=2"
     rest_payload = "&REST_PAYLOAD=true"
+    tracking_id = "trackingId=5338584772"
+    shared = "#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}#{tracking_id}"
+
+    operation_name = "OPERATION-NAME=findItemsAdvanced"
+
     url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
-    @base_url = "#{url_start}#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{rest_payload}#{entries_per_page}#{rest_payload}"
+    @base_url = "#{url_start}#{operation_name}#{shared}"
     @request_type = 'findItemsAdvancedResponse'
     @@search_queries.each do |query|
       @url = "#{@base_url}#{query[1]}"
@@ -81,12 +85,8 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
     end
 
     operation_name = "OPERATION-NAME=findItemsByCategory"
-    service_version = "&SERVICE-VERSION=1.0.0"
-    security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
-    response_data_format = "&RESPONSE-DATA-FORMAT=JSON"
-    entries_per_page = "&entriesPerPage=2"
-    rest_payload = "&REST_PAYLOAD=true"
-    params = "#{operation_name}#{service_version}#{security_appname}#{response_data_format}#{entries_per_page}#{rest_payload}"
+
+    params = "#{operation_name}#{shared}"
     url_start = "https://svcs.ebay.com/services/search/FindingService/v1?"
     @base_url = "#{url_start}#{params}"
 
