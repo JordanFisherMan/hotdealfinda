@@ -6,7 +6,6 @@ class ResultsController < ApplicationController
   def results
     fetch
     countries_dropdown
-    affiliate_id
     gclid
     @search = {
       present: params[:search].present? && params[:search] != '',
