@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def index
     fetch
     countries_dropdown
-    gclid
+    @gclid = gclid
     session[:country] ||= Geocoder.search(request.remote_ip)
     @location = if params[:location].present?
                   params[:location]
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   end
 
   def gclid
-    @gclid == params[:gclid].present? ? "&customid=#{params[:gclid]}" : ''
+    params[:gclid].present? ? "&customid=#{params[:gclid]}" : ''
   end
 
   def title
