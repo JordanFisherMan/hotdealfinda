@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   end
 
   def gclid
-    @gclid = "&customid=#{params[:gclid]}" || ''
+    @gclid == params[:gclid].present? ? "&customid=#{params[:gclid]}" : ''
   end
 
   def title
