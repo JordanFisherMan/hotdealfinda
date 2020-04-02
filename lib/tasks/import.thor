@@ -64,6 +64,9 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
 
   desc 'fetch', 'A task to fetch the latest deals from Ebay'
   def fetch
+    # we will delete deals that are not pulled in by this fetch
+    deals = Deal.all
+    deals.update(new: false)
     log "[EBAY IMPORT:FETCH] Started - #{Time.now}"
     service_version = "&SERVICE-VERSION=1.0.0"
     security_appname = "&SECURITY-APPNAME=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f"
@@ -83,7 +86,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       @category = query[0]
       send_ebay_request
     end
-
+    
     operation_name = "OPERATION-NAME=findItemsByCategory"
 
     params = "#{operation_name}#{shared}"
@@ -96,7 +99,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       @category = category[0]
       send_ebay_request
     end
-
+    deals.where(new: false).destroy_all
     log "[EBAY IMPORT:FETCH] Finished - #{Time.now}"
   end
 
@@ -152,9 +155,6 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       sort_price,
       country_code)
     deal = Deal.find_or_initialize_by(deal_id: id)
-    # get a higher quality image for the product
-    # url = "http://open.api.ebay.com/shopping?ItemID=#{id}&callname=GetSingleItem&responseencoding=JSON&appid=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f&version=967"
-    # image_json = ebay_send_url(url)
     deal[:image_url] = image_url
     deal[:title] = title
     deal[:highlights] = highlights
@@ -168,6 +168,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
     deal[:rating] = rating
     deal[:sort_price] = sort_price
     deal[:country_code] = country_code
+    deal.new = true
     deal.save!
     category = Category.find_or_initialize_by(slug: category)
     category.save!

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_090100) do
+ActiveRecord::Schema.define(version: 2020_04_02_101816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_090100) do
     t.string "country_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "new"
     t.index ["deal_id"], name: "index_deals_on_deal_id", unique: true
   end
 
