@@ -16,6 +16,18 @@
 @import "../components/sort";
 
 .results {
+  &__results{
+    @media (max-width: 500px){
+      margin: 0 -7.5px;
+    }
+  }
+  &__row{
+    @media (max-width: 500px){
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
   &__categories {
     display: none;
     padding: 0 0 30px;
@@ -109,6 +121,13 @@
 
   &__result {
     margin-bottom: 35px;
+    @media (max-width: 500px){
+      width: 50%;
+      padding: 0 7.5px;
+    }
+    @media (max-width: 340px){
+      width: 100%;
+    }
   }
 }
 

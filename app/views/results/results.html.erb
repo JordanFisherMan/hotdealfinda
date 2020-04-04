@@ -34,17 +34,19 @@
           <div id="js-categories" class="results__categories">
             <%= render 'components/category_list/category_list_filter', classes: 'category-list__category--3-col' %>
           </div>
-          <% unless @results.empty? %>
-            <% @results.each do |deal| %>
-              <div class="results__result">
-                <%= render 'components/result', deal: deal %>
-              </div>
+          <div class="results__row">
+            <% unless @results.empty? %>
+              <% @results.each do |deal| %>
+                <div class="results__result">
+                  <%= render 'components/result', deal: deal %>
+                </div>
+              <% end %>
+            <% else %>
+              <h2>No Results.</h2>
+              <p>Perhaps you should try one of these searches:</p>
+              <%= render 'components/related' %>
             <% end %>
-          <% else %>
-            <h2>No Results.</h2>
-            <p>Perhaps you should try one of these searches:</p>
-            <%= render 'components/related' %>
-          <% end %>
+          </div>
           <div class="results__pagination">
             <%= will_paginate @results %>
           </div>
