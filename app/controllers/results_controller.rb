@@ -34,7 +34,7 @@ class ResultsController < ApplicationController
     query.push("country_code LIKE '#{@location}'")
     if @search[:present]
       if @search[:query] == 'xbox one'
-        query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%' AND title NOT ILIKE '%remote%' AND title NOT ILIKE '%box only%')")
+        query.push("(title ILIKE '%xbox one%' AND title ILIKE '%console%' AND title NOT ILIKE '%remote%' AND title NOT ILIKE '%box only%' AND title NOT ILIKE '%original box%')")
       elsif @search[:query] == 'xbox one games'
         query.push("(category LIKE 'video-games' AND title NOT ILIKE '%gift card%' AND title NOT ILIKE '%giftcard%')")
       elsif @search[:query] == 'xbox one accessories'
