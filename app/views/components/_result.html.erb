@@ -16,7 +16,7 @@
     <div class="result__price">
       <%= deal.price %>
     </div>
-    <div class="result__topratedlisting <% if deal.rating == "true" %>result__topratedlisting--visible<% end %>">
+    <div class="result__topratedlisting <%# if deal.rating == "true" %>result__topratedlisting--visible<%# end %>">
       top rated listing
     </div>
     <%= link_to '> Go To Deal', "#{deal.url}#{@gclid}", class: 'result__link', target: '_blank' %>
