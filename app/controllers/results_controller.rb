@@ -43,6 +43,8 @@ class ResultsController < ApplicationController
         query.push("(title ILIKE '%xbox one x%' AND title ILIKE '%console%')")
       elsif @search[:query] == 'xbox one controller'
         query.push("(category LIKE 'xbox-one-controller')")
+      elsif @search[:query] == 'xbox one strategy guides'
+        query.push("(category LIKE 'xbox-one-strategy-guides' AND title ILIKE '%xbox one%')")
       elsif @search[:query] == 'xbox one elite controller'
         query.push("((title ILIKE '%#{@search[:query]}%' OR highlights ILIKE '%#{@search[:query]}%') AND title NOT ILIKE '%accessories%' AND title NOT ILIKE '%bumpers%' AND title NOT ILIKE '%kit%')")
       elsif @search[:present]
@@ -52,7 +54,6 @@ class ResultsController < ApplicationController
     if params[:category].present? && @category[:query] != 'all'
       query.push("category LIKE '#{params[:category]}'")
     end
-
     @results = @deals.where(query.join(' AND '))
     if @search[:present] && @search[:query] == 'xbox one games'
       @results = @results.order("random()")
