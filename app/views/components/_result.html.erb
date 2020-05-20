@@ -1,4 +1,4 @@
-<div class="result" data-deal-id="<%= deal.id %>">
+<div class="result">
   <div class="result__primary">
     <div class="image-container">
       <%= link_to "#{deal.url}#{@gclid}", target: '_blank' do %>
@@ -13,8 +13,9 @@
     </div>
   </div>
   <div class="result__tertiary">
-    <div class="result__price">
-      <%= deal.price %>
+    <div id="<%= deal.deal_id %>" class="result__price js-price">
+      <div class="animated-background">
+        </div>
     </div>
     <div class="result__topratedlisting <% if deal.rating == "true" %>result__topratedlisting--visible<% end %>">
       top rated listing

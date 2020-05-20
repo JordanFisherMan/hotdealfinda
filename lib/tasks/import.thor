@@ -86,7 +86,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
       @category = query[0]
       send_ebay_request
     end
-    
+
     operation_name = "OPERATION-NAME=findItemsByCategory"
 
     params = "#{operation_name}#{shared}"
@@ -126,7 +126,7 @@ desc 'remove_expired_deals', 'A task to delete all stored deals that have expire
   def extract_json item
     return unless item['galleryURL'].present? # some deals don't have images uploaded by the seller
     save_deal(
-      "ebay_#{item['itemId'].first}",
+      item['itemId'].first.to_i,
       item['galleryURL'].first,
       item['title'].first,
       '',

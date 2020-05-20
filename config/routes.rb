@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'privacy', to: 'info#privacy'
   get 'contact', to: 'info#contact'
   get 'categories', to: 'application#categories'
+  get 'get_live_price', to: 'results#get_live_price'
 end

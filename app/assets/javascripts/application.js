@@ -14,16 +14,15 @@
 //= require activestorage
 //= require_tree .
 
-
 var filter = document.getElementById("js-filter");
-if(typeof(filter) != 'undefined' && filter != null){
+if (typeof filter != "undefined" && filter != null) {
   // Where el is the DOM element you'd like to test for visibility
   function isHidden(el) {
-      return (el.offsetParent === null)
+    return el.offsetParent === null;
   }
   var categories = document.getElementById("js-categories");
-  filter.addEventListener("click", function(){
-    if(isHidden(categories)){
+  filter.addEventListener("click", function () {
+    if (isHidden(categories)) {
       categories.style.display = "block";
     } else {
       categories.style.display = "none";
@@ -31,24 +30,27 @@ if(typeof(filter) != 'undefined' && filter != null){
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
-    if ("IntersectionObserver" in window) {
-        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    let lazyImage = entry.target;
-                    lazyImage.src = lazyImage.dataset.src;
-                    // lazyImage.srcset = lazyImage.dataset.srcset;
-                    lazyImage.classList.remove("lazy");
-                    lazyImageObserver.unobserve(lazyImage);
-                }
-            });
-        });
-        lazyImages.forEach(function(lazyImage) {
-            lazyImageObserver.observe(lazyImage);
-        });
-    } else {
-        // Possibly fall back to a more compatible method here
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function (
+      entries,
+      observer
+    ) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          // lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+    lazyImages.forEach(function (lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
 });

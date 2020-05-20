@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0;
   font-family: 'Raleway', sans-serif;
   color: $font-colour-primary;
@@ -8,68 +8,68 @@ body{
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 input,
-select{
+select {
 
-  &:focus{
+  &:focus {
     outline: 0;
   }
 }
 
-button:focus{
+button:focus {
   outline: 0;
 }
 
-select{
+select {
   background: white;
 }
 
-.container{
+.container {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-.row{
+.row {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -15px;
 }
 
-ul{
+ul {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
 }
 
-a{
+a {
   text-decoration: none;
 
-  &:visited{
+  &:visited {
     text-decoration: none;
   }
 
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 }
 
-hr{
+hr {
   border: 0;
   background-color: $border-colour;
   margin: 0;
   height: 1px;
 }
 
-.adsbygoogle{
+.adsbygoogle {
   overflow: hidden;
 }
 
-.gradient{
+.gradient {
   background: linear-gradient(45deg, $green, $light-green);
 }
 
@@ -79,6 +79,6 @@ hr{
 }
 
 h1,
-h2{
+h2 {
   margin: 0;
 }

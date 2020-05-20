@@ -1,6 +1,7 @@
 @import "../variables";
 @import "../defaults";
 @import "../mixins";
+@import "../components/animated-background";
 @import "../components/breadcrumb";
 @import "../components/categories-bar";
 @import "../components/hero";
@@ -16,13 +17,14 @@
 @import "../components/sort";
 
 .results {
-  &__results{
-    @media (max-width: 500px){
+  &__results {
+    @media (max-width: 500px) {
       margin: 0 -7.5px;
     }
   }
-  &__row{
-    @media (max-width: 500px){
+
+  &__row {
+    @media (max-width: 500px) {
       display: flex;
       flex-wrap: wrap;
     }
@@ -82,6 +84,7 @@
 
   &__primary {
     width: 70%;
+
     @media (max-width: 767px) {
       width: 100%;
       margin-bottom: 20px;
@@ -90,6 +93,7 @@
 
   &__secondary {
     width: 30%;
+
     @media (max-width: 767px) {
       width: 100%;
     }
@@ -109,6 +113,7 @@
   &__position-and-sort {
     justify-content: space-between;
     margin-bottom: 20px;
+
     @media (max-width: 500px) {
       flex-direction: column;
     }
@@ -121,12 +126,14 @@
 
   &__result {
     margin-bottom: 35px;
-    @media (max-width: 500px){
+
+    @media (max-width: 500px) {
       width: 50%;
       padding: 0 7.5px;
       margin-bottom: 15px;
     }
-    @media (max-width: 340px){
+
+    @media (max-width: 340px) {
       width: 100%;
     }
   }

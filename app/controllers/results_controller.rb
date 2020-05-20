@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'rest-client'
 class ResultsController < ApplicationController
   include ApplicationHelper
 
@@ -87,6 +87,18 @@ class ResultsController < ApplicationController
     if @search[:present] && @search[:query] == 'xbox one'
       @title = 'Xbox One Deals'
     end
+  end
+
+  def get_live_price
+  url = "https://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=JordanFi-HotDeals-PRD-58ec8fa73-6837b72f&siteid=0&version=967&ItemID=#{params[:id]}"
+    begin
+      response = RestClient.get(url)
+    rescue RestClient::BadRequest => e
+      log "Error: #{e}"
+      return nil
+    end
+    json = JSON.parse(response.body)
+    render json: json
   end
 
   private
