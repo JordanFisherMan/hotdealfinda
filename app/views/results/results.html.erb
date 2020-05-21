@@ -37,9 +37,11 @@
           <div class="results__row">
             <% unless @results.empty? %>
               <% @results.each do |deal| %>
+              <% cache deal do %>
                 <div class="results__result">
                   <%= render 'components/result', deal: deal %>
                 </div>
+                <% end %>
               <% end %>
             <% else %>
               <h2>No Results.</h2>
