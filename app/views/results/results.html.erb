@@ -6,10 +6,12 @@
 <div class="container">
   <section class="results__breadcrumbs">
     <% @current_filters.each do |filter| %>
-      <% if filter[:present] %>
-        <span class="results__breadcrumb">
-          <%= render 'components/breadcrumb', breadcrumb: filter %>
-        </span>
+      <% cache filter do %>
+        <% if filter[:present] %>
+          <span class="results__breadcrumb">
+            <%= render 'components/breadcrumb', breadcrumb: filter %>
+          </span>
+        <% end %>
       <% end %>
     <% end %>
   </section>
@@ -67,6 +69,7 @@
               </h2>
               <div class="recommended__deals">
                 <% @recommended_deals.each do |deal| %>
+                  <% cache deal do %>
                   <div class="recommended__deal-container">
                     <div class="recommended__deal" onclick="window.open('<%= "#{deal.url}#{@gclid}" %>', '_blank');">
                       <div class="recommended__primary">
@@ -81,6 +84,7 @@
                       </div>
                     </div>
                   </div>
+                  <% end %>
                 <% end %>
               </div>
             </div>

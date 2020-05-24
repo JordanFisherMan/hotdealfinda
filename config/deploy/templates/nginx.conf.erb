@@ -24,6 +24,26 @@ server {
   listen 80;
   server_name <%= fetch(:nginx_domains) %>;
   rewrite ^(.*) https://$host$1 permanent;
+  gzip on;
+  gzip_comp_level 2;
+  gzip_http_version 1.0;
+  gzip_proxied any;
+  gzip_min_length 1100;
+  gzip_buffers 16 8k;
+  gzip_types text/plain text/html text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+  # Disable for IE < 6 because there are some known problems
+  gzip_disable "MSIE [1-6].(?!.*SV1)";
+
+  # Add a vary header for downstream proxies to avoid sending cached gzipped files to IE6
+  gzip_vary on;
+
+  load_module modules/ngx_http_brotli_filter_module.so;
+  load_module modules/ngx_http_brotli_static_module.so;
+
+  brotli on;
+  brotli_comp_level 1;
+  brotli_types text/plain text/css;
 }
 <% end %>
 
