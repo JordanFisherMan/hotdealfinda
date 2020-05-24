@@ -7,7 +7,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 var json = JSON.parse(this.responseText);
                 var deal = document.getElementById(json.Item.ItemID.toString());
-                deal.innerHTML = "$" + json.Item.ConvertedCurrentPrice.Value;
+                deal.innerHTML = "$" + json.Item.ConvertedCurrentPrice.Value.toFixed(2);
             }
         };
         xhttp.open("GET", "/get_live_price?id=" + prices[i].id, true);
