@@ -26,6 +26,7 @@ gem 'whenever', require: false
 gem 'will_paginate'
 gem 'geocoder'
 gem "rubyzip", ">= 1.3.0"
+gem 'render_async'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'

@@ -37,11 +37,12 @@
             <%= render 'components/category_list/category_list_filter', classes: 'category-list__category--3-col' %>
           </div>
           <div class="results__row">
+            <%= render_async get_results_path %>
             <% unless @results.empty? %>
               <% @results.each do |deal| %>
               <% cache deal do %>
                 <div class="results__result">
-                  <%= render 'components/result', deal: deal %>
+                  <%#= render 'components/result', deal: deal %>
                 </div>
                 <% end %>
               <% end %>

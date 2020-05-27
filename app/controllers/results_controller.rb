@@ -101,6 +101,10 @@ class ResultsController < ApplicationController
     render json: json
   end
 
+  def get_results
+    
+  end
+
   private
 
   def category_query
