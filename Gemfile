@@ -26,6 +26,7 @@ gem 'whenever', require: false
 gem 'will_paginate'
 gem 'geocoder'
 gem "rubyzip", ">= 1.3.0"
+gem 'webpacker'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -66,6 +67,7 @@ group :development do
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rails-db'
   gem 'capistrano-logtail'
+  gem 'foreman'
 end
 
 group :test do

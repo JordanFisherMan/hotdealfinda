@@ -1,7 +1,7 @@
 <div class="logo-bar">
   <%= link_to root_path do %>
   <picture class="logo-bar__picture">
-    <source srcset="<%= image_path 'logo.webp' %>" type="image/webp" alt="" class="logo-bar__logo">
+    <source srcset="<%= asset_pack_path 'logo.webp' %>" type="image/webp" alt="" class="logo-bar__logo">
     <%= image_tag 'logo.png', class: 'logo-bar__logo' %>
   </picture>
   <% end %>
