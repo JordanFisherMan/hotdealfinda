@@ -2,18 +2,17 @@
 <html>
   <head>
     <title><%= @title %></title>
-    <%= favicon_link_tag image_path('favicon.png') %>
+    <%= favicon_pack_tag 'favicon.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_pack_tag "application" %>
     <%= stylesheet_pack_tag "#{action_name}/above_fold.css" %>
-    <style type="text/css">
+    <%# <style type="text/css"> %>
       <%#= Rails.application.assets_manifest.find_sources("#{action_name}/above_fold.css").first.to_s.html_safe %>
-    </style>
+    <%# </style> %>
   </head>
   <body>
-
 
     <%#= yield %>
 

@@ -14,10 +14,10 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import '../src/application.scss';
-require.context('../../assets/images', true);
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+
+require.context('../../assets/images', true);
 
 var filter = document.getElementById("js-filter");
 if (typeof filter != "undefined" && filter != null) {
