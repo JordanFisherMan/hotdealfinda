@@ -25,13 +25,28 @@
 # Rails.application.config.content_security_policy_report_only = true
 
 Rails.application.config.content_security_policy do |policy|
-  policy.default_src :self, :https
+  # default
+  # policy.default_src :self, :https
+  # policy.font_src    :self, :https, :data
+  # policy.img_src     :self, :https, :data
+  # policy.object_src  :none
+  # policy.script_src  :self, :https
+  # policy.style_src   :self, :https
+  # policy.connect_src :self, :https, "http://localhost:5000", "ws://localhost:5000" if Rails.env.development?
+
   policy.font_src    :self, :https, :data
   policy.img_src     :self, :https, :data
   policy.object_src  :none
-  policy.script_src  :self, :https
-  policy.style_src   :self, :https
-  policy.connect_src :self, :https, "http://localhost:5000", "ws://localhost:5000" if Rails.env.development?
+  # policy.style_src   :self, :https, :unsafe_inline
+
+  if Rails.env.development?
+    # policy.script_src :self, :https, :unsafe_eval
+    # policy.default_src :self, :https, :unsafe_eval
+    policy.connect_src :self, :https, 'http://localhost:3035', 'ws://localhost:3035', 'ws://localhost:3000'
+  else
+    policy.script_src :self, :https
+    policy.default_src :self, :https
+  end
   
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"

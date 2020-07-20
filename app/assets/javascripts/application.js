@@ -13,8 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
 
 var filter = document.getElementById("js-filter");
 if (typeof filter != "undefined" && filter != null) {
@@ -56,3 +54,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Possibly fall back to a more compatible method here
   }
 });
+
+// get prices prices after page load
+(function getPrices() {
+  var xhttp;
+  var prices = document.getElementsByClassName("js-price");
+  for (var i = 0; i < prices.length; i++) {
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+              var json = JSON.parse(this.responseText);
+              var deal = document.getElementById(json.Item.ItemID.toString());
+              deal.innerHTML = "$" + json.Item.ConvertedCurrentPrice.Value.toFixed(2);
+          }
+      };
+      xhttp.open("GET", "/get_live_price?id=" + prices[i].id, true);
+      xhttp.send();
+  }
+})();

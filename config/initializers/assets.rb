@@ -16,4 +16,6 @@ Rails.application.config.assets.precompile += %w(
   results/*
   categories/*
   info.scss
-  below_fold.scss )
+  below_fold.scss 
+  price_fetch.js
+)

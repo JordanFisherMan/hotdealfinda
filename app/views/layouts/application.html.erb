@@ -6,20 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_pack_tag "application" %>
-    <%= stylesheet_pack_tag "#{action_name}/above_fold.css" %>
-    <%# <style type="text/css"> %>
-      <%#= Rails.application.assets_manifest.find_sources("#{action_name}/above_fold.css").first.to_s.html_safe %>
-    <%# </style> %>
+    <%= stylesheet_pack_tag "#{action_name}/above_fold" %>
+    <%= stylesheet_pack_tag "#{action_name}/below_fold" %>
+    <%= stylesheet_pack_tag "below_fold" %>
+    
   </head>
   <body>
 
-    <%#= yield %>
+    <%= yield %>
 
-    <%= stylesheet_pack_tag 'application' %>
-
-    <%#= stylesheet_pack_tag "#{action_name}/below_fold" %>
-    <%#= stylesheet_pack_tag 'below_fold' %>
     <%= javascript_pack_tag 'application' %>
     <%#= render 'shared/google_tag_manager' %>
     <%#= render 'shared/google_analytics' %>
