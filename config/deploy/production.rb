@@ -2,7 +2,7 @@ server 'hotdealsfinda.com', user: 'deploy', roles: %w{web app db}
 
  set :app_domain, 'hotdealsfinda.com'
  set :nginx_domains, "hotdealsfinda.com www.hotdealsfinda.com"
- set :branch, :master
+ set :branch, "feature/webpacker"
  set :ssh_options, {
    keys: %w(~/.ssh/rails-production.pem),
    forward_agent: false,
