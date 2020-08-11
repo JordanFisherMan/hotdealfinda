@@ -37,15 +37,15 @@ Rails.application.config.content_security_policy do |policy|
   # policy.font_src    :self, :https, :data
   # policy.img_src     :self, :https, :data
   # policy.object_src  :none
-  # policy.style_src   :self, :https, :unsafe_inline
 
   if Rails.env.development?
     # policy.script_src :self, :https, :unsafe_eval
     # policy.default_src :self, :https, :unsafe_eval
     policy.connect_src :self, :https, 'http://localhost:3035', 'ws://localhost:3035', 'ws://localhost:3000'
   else
-    policy.script_src :self, :https
-    policy.default_src :self, :https
+    policy.style_src   :self, :https, :unsafe_inline
+    policy.script_src :self, :https, :unsafe_inline
+    policy.default_src :self, :https, :unsafe_inline
   end
   
   # Specify URI for violation reports
