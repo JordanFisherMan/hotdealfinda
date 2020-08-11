@@ -34,9 +34,9 @@ Rails.application.config.content_security_policy do |policy|
   # policy.style_src   :self, :https
   # policy.connect_src :self, :https, "http://localhost:5000", "ws://localhost:5000" if Rails.env.development?
 
-  policy.font_src    :self, :https, :data
-  policy.img_src     :self, :https, :data
-  policy.object_src  :none
+  # policy.font_src    :self, :https, :data
+  # policy.img_src     :self, :https, :data
+  # policy.object_src  :none
   # policy.style_src   :self, :https, :unsafe_inline
 
   if Rails.env.development?
