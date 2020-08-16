@@ -68,6 +68,7 @@ set :nginx_read_timeout, 30
 set :app_server, true
 set :app_server_socket, "#{shared_path}/tmp/sockets/puma.sock"
 set :app_server_host, "127.0.0.1"
+after 'deploy:updated', 'webpacker:precompile'
 
 set :whenever_variables, -> {
   "\'environment=#{fetch :whenever_environment}" \

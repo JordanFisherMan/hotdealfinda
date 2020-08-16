@@ -68,6 +68,7 @@ group :development do
   gem 'capistrano-rails-db'
   gem 'capistrano-logtail'
   gem 'foreman'
+  gem 'capistrano-webpacker-precompile', require: false
 end
 
 group :test do
