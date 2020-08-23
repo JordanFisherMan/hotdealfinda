@@ -69,23 +69,13 @@ set :app_server, true
 set :app_server_socket, "#{shared_path}/tmp/sockets/puma.sock"
 set :app_server_host, "127.0.0.1"
 
+# RAILS_GROUPS env value for the assets:precompile task. Default to nil.
+set :rails_assets_groups, :assets
+
 set :whenever_variables, -> {
   "\'environment=#{fetch :whenever_environment}" \
   "&rbenv_path=/home/#{fetch :user}/.rbenv/bin/rbenv" \
   "&rbenv_version=#{fetch :rbenv_ruby}\'" \
 }
 
-after 'deploy:updated', 'webpacker:precompile'
 
-before "deploy:assets:precompile", "deploy:yarn_install"
-
-namespace :deploy do
-  desc 'Run rake yarn:install'
-  task :yarn_install do
-    on roles(:web) do
-      within release_path do
-        execute("cd #{release_path} && yarn install")
-      end
-    end
-  end
-end
