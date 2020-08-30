@@ -82,3 +82,12 @@ h1,
 h2 {
   margin: 0;
 }
+
+img {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+img[data-src] {
+	opacity: 0;
+}
