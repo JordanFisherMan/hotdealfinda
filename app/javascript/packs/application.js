@@ -17,6 +17,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 require.context('../../assets/images', true);
+import '../../assets/javascripts/application';
 import '../../assets/stylesheets/index/above_fold';
 import '../../assets/stylesheets/index/below_fold';
 import '../../assets/stylesheets/results/above_fold';
