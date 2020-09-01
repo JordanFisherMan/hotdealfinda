@@ -10,7 +10,7 @@
     <%= stylesheet_pack_tag "#{action_name}/below_fold" %>
     <%= stylesheet_pack_tag "below_fold" %>
     <%= stylesheet_pack_tag "application" %>
-    <%= javascript_pack_tag 'application' %>
+    <%#= javascript_pack_tag 'application' %>
   </head>
   <body>
 
@@ -20,6 +20,6 @@
     <%= render 'shared/google_tag_manager' %>
     <%= render 'shared/google_analytics' %>
     <script data-ad-client="ca-pub-9099077473256435" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
