@@ -11,9 +11,9 @@
     <%= stylesheet_pack_tag "below_fold" %>
     <%= stylesheet_pack_tag "application" %>
     <% if action_name == 'results' %>
-      <%= javascript_pack_tag 'results', type: 'module' %>
+      <%= javascript_pack_tag 'results' %>
     <% else %>
-      <%= javascript_pack_tag 'application', type: 'module' %>
+      <%= javascript_pack_tag 'application' %>
     <% end %>
   </head>
   <body>
