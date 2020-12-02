@@ -42,8 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
           let lazyImage = entry.target;
           lazyImage.src = lazyImage.dataset.src;
           // lazyImage.srcset = lazyImage.dataset.srcset;
-          lazyImage.classList.add("lazy--visible");
+          // lazyImage.classList.add("lazy--visible");
           lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.classList.add("lazy--visible");
         }
       });
     });
