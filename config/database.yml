@@ -13,6 +13,7 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: hotdealsfinda_production
   username: hotdealsfinda
   password: <%= Rails.application.credentials.production[:db][:password] %>
